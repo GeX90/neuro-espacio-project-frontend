@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
+import Loader from "../components/Loader";
 import "./CreateCitasPage.css";
 
 const API_URL = "http://localhost:5005";
@@ -61,7 +62,7 @@ function CreateCitasPage() {
     };
 
     if (isLoading) {
-        return <h1>Autenticando...</h1>;
+        return <Loader message="Autenticando..." />;
     }
 
     return (

@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
+import Loader from "../components/Loader";
 
 const API_URL = "http://localhost:5005";
 
@@ -131,11 +132,11 @@ function EditCitasPage() {
     };
 
     if (isLoading) {
-        return <h1>Autenticando...</h1>;
+        return <Loader message="Autenticando..." />;
     }
 
     if (citas === null) {
-        return <h1>Cargando citas...</h1>;
+        return <Loader message="Cargando citas..." />;
     }
 
     if (error && !editingId) {

@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState, useContext } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
+import Loader from "../components/Loader";
 
 const API_URL = "http://localhost:5005";
 
@@ -42,9 +43,9 @@ function CitaDetailsPage() {
       });
   }, [id, isLoggedIn, isLoading, navigate]);
 
-  if (isLoading) return <h1>Autenticando...</h1>;
+  if (isLoading) return <Loader message="Autenticando..." />;
   if (error) return <h1>Error: {error}</h1>;
-  if (!cita) return <h1>Cargando detalles...</h1>;
+  if (!cita) return <Loader message="Cargando detalles..." />;
 
   return (
     <div className="card" style={{ maxWidth: 600 }}>
