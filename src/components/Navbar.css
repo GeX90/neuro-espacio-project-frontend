@@ -1,0 +1,108 @@
+nav {
+    background-image: url('/psicoimg2.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    min-height: 80px;
+}
+
+.navbar-logo img {
+    height: 60px;
+    width: auto;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.navbar-buttons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+nav button,
+nav a {
+    text-decoration: none;
+}
+
+nav button {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+nav button:hover {
+    background-color: rgba(255, 255, 255, 1);
+}
+
+nav span {
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    padding: 0 15px;
+    font-size: 14px;
+}
+
+
+@media (max-width: 768px) {
+    nav {
+        padding: 12px 20px;
+        min-height: auto;
+    }
+
+    .navbar-logo img {
+        height: 50px;
+    }
+
+    .navbar-buttons {
+        width: 100%;
+        margin-top: 10px;
+        justify-content: flex-end;
+        gap: 8px;
+    }
+
+    nav button {
+        padding: 8px 15px;
+        font-size: 13px;
+    }
+
+    nav span {
+        padding: 0 8px;
+        font-size: 12px;
+    }
+}
+
+
+@media (max-width: 480px) {
+    nav {
+        padding: 10px 15px;
+    }
+
+    .navbar-logo img {
+        height: 45px;
+    }
+
+    .navbar-buttons {
+        gap: 5px;
+    }
+
+    nav button {
+        padding: 6px 10px;
+        font-size: 11px;
+    }
+
+    nav span {
+        padding: 0 5px;
+        font-size: 10px;
+        display: none;
+    }
+}

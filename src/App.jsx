@@ -8,6 +8,7 @@ import IsAnon from "./components/IsAnon";
 import CitasPage from "./pages/CitasPage";
 import CreateCitasPage from "./pages/CreateCitasPage";
 import EditCitasPage from "./pages/EditCitasPage";
+import AboutUsPage from "./pages/AboutUsPage";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/citas" element={<IsPrivate> <CitasPage/> </IsPrivate>} />
         <Route path="/crear-cita" element={<IsPrivate> <CreateCitasPage /> </IsPrivate>} />
         <Route path="/editar-citas" element={<IsPrivate> <EditCitasPage /> </IsPrivate>} />
+        <Route path="/about" element={<AboutUsPage />} />
       </Routes>
     </div>
   );
