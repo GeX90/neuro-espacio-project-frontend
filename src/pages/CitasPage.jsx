@@ -46,7 +46,20 @@ function CitasPage() {
         return <h1>Error: {error}</h1>;
     }
 
-    return <h1>Número de Citas: {citas.length}</h1>
+    return (
+        <div>
+            <h1>Número de Citas: {citas.length}</h1>
+            {citas.map((elm, i, arr) => {
+                return (
+                    <div className="card" key={i}>
+                        <p>{elm.fecha}</p>
+                        <p>{elm.hora}</p>
+                        <p>{elm.motivo}</p>
+                    </div>
+                );
+            })}
+        </div>
+    );
 }
 
 export default CitasPage;
