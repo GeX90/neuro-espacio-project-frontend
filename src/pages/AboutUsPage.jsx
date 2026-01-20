@@ -38,6 +38,29 @@ function AboutUsPage() {
           ¿Tienes preguntas? No dudes en contactarnos. Estamos aquí para ayudarte en tu
           camino hacia el bienestar mental.
         </p>
+
+        <h2>Web Developer</h2>
+        <p>
+          <strong>Jorge Jiménez Morgado</strong>
+        </p>
+        <div className="developer-links">
+          <a 
+            href="https://github.com/GeX90" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="dev-link"
+          >
+            <span>GitHub</span>
+          </a>
+          <a 
+            href="https://www.linkedin.com/in/jorge-jimenez-morgado-2a66a83a5/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="dev-link"
+          >
+            <span>LinkedIn</span>
+          </a>
+        </div>
       </div>
     </div>
   );
