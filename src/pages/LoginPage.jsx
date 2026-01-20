@@ -40,11 +40,23 @@ function LoginPage(props) {
         
         // Verify the token by sending a request 
         // to the server's JWT validation endpoint. 
-        authenticateUser();                     // <== ADD
-        navigate('/crear-cita');
+        authenticateUser();
+        
+        // Check if user has appointments
+        return axios.get(`${API_URL}/api/citas`, {
+          headers: { Authorization: `Bearer ${response.data.authToken}` }
+        });
+      })
+      .then((citasResponse) => {
+        // Redirect based on whether user has appointments
+        if (citasResponse.data && citasResponse.data.length > 0) {
+          navigate('/citas');
+        } else {
+          navigate('/crear-cita');
+        }
       })
       .catch((error) => {
-        const errorDescription = error.response.data.message;
+        const errorDescription = error.response?.data?.message || "Error al iniciar sesión";
         setErrorMessage(errorDescription);
       })
       .finally(() => {
