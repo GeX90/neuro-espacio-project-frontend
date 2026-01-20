@@ -3,6 +3,7 @@ import { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import Loader from "../components/Loader";
+import "./CitasPage.css";
 
 const API_URL = "http://localhost:5005";
 
@@ -59,19 +60,48 @@ function CitasPage() {
     }
 
     return (
-        <div>
-            <h1>Número de Citas: {citas.length}</h1>
-            {citas.map((elm, i, arr) => {
-                return (
-                    <Link to={`/citas/${elm._id}`} key={elm._id} style={{ textDecoration: "none", color: "inherit" }}>
-                        <div className="card" style={{ cursor: "pointer" }}>
-                            <p>{formatFecha(elm.fecha)}</p>
-                            <p>{elm.hora}</p>
-                            <p>{elm.motivo}</p>
-                        </div>
-                    </Link>
-                );
-            })}
+        <div className="CitasPage">
+            <div className="CitasPage-header">
+                <h1>Mis Citas</h1>
+                <p className="subtitle">{citas.length} {citas.length === 1 ? 'cita programada' : 'citas programadas'}</p>
+            </div>
+            
+            {citas.length === 0 ? (
+                <div className="CitasPage-empty">
+                    <div className="CitasPage-empty-icon">📅</div>
+                    <h2>No tienes citas programadas</h2>
+                    <p>Comienza a gestionar tu salud mental reservando tu primera cita</p>
+                    <Link to="/crear-cita" className="btn-create">Crear Nueva Cita</Link>
+                </div>
+            ) : (
+                <div className="citas-grid">
+                    {citas.map((elm) => {
+                        const fecha = new Date(elm.fecha);
+                        const dia = fecha.getDate();
+                        
+                        return (
+                            <Link to={`/citas/${elm._id}`} key={elm._id} className="cita-card-link">
+                                <div className="cita-card">
+                                    <div className="cita-card-header">
+                                        <div className="cita-card-icon">{dia}</div>
+                                        <div className="cita-card-date">
+                                            <p className="day">{fecha.toLocaleDateString('es-ES', { month: 'short', year: 'numeric' }).toUpperCase()}</p>
+                                            <p className="full-date">{formatFecha(elm.fecha)}</p>
+                                        </div>
+                                    </div>
+                                    <div className="cita-card-body">
+                                        <div className="cita-card-time">{elm.hora}</div>
+                                        <p className="cita-card-motivo">
+                                            <strong>Motivo:</strong>
+                                            {elm.motivo}
+                                        </p>
+                                    </div>
+                                </div>
+                            </Link>
+                        );
+                    })}
+                </div>
+            )}
         </div>
     );
 }

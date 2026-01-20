@@ -3,6 +3,7 @@ import { useEffect, useState, useContext } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import Loader from "../components/Loader";
+import "./CitaDetailsPage.css";
 
 const API_URL = "http://localhost:5005";
 
@@ -48,15 +49,43 @@ function CitaDetailsPage() {
   if (!cita) return <Loader message="Cargando detalles..." />;
 
   return (
-    <div className="card" style={{ maxWidth: 600 }}>
-      <h2>Detalles de la Cita</h2>
-      <p><strong>Fecha:</strong> {formatFecha(cita.fecha)}</p>
-      <p><strong>Hora:</strong> {cita.hora}</p>
-      <p><strong>Motivo:</strong> {cita.motivo}</p>
+    <div className="CitaDetailsPage">
+      <div className="cita-details-container">
+        <div className="cita-details-header">
+          <h2>Detalles de la Cita</h2>
+          <p className="cita-details-subtitle">Información completa de tu cita programada</p>
+        </div>
 
-      <div style={{ display: "flex", gap: 10, marginTop: 15 }}>
-        <button onClick={() => navigate("/editar-citas")}>Editar Cita</button>
-        <Link to="/citas"><button>Volver</button></Link>
+        <div className="cita-details-body">
+          <div className="cita-detail-item">
+            <div className="cita-detail-icon">📅</div>
+            <div className="cita-detail-content">
+              <p className="cita-detail-label">Fecha</p>
+              <p className="cita-detail-value">{formatFecha(cita.fecha)}</p>
+            </div>
+          </div>
+
+          <div className="cita-detail-item">
+            <div className="cita-detail-icon">🕐</div>
+            <div className="cita-detail-content">
+              <p className="cita-detail-label">Hora</p>
+              <p className="cita-detail-value">{cita.hora}</p>
+            </div>
+          </div>
+
+          <div className="cita-detail-item">
+            <div className="cita-detail-icon">📝</div>
+            <div className="cita-detail-content">
+              <p className="cita-detail-label">Motivo de la Consulta</p>
+              <p className="cita-detail-value motivo-text">{cita.motivo}</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="cita-details-actions">
+          <button className="btn-editar" onClick={() => navigate("/editar-citas")}>Editar Cita</button>
+          <Link to="/citas" className="btn-volver">Volver</Link>
+        </div>
       </div>
     </div>
   );

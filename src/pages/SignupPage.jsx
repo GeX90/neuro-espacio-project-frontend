@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Loader from "../components/Loader";
+import "./SignupPage.css";
 
 const API_URL = "http://localhost:5005";
 
@@ -50,10 +51,10 @@ function SignupPage(props) {
         <Loader message="Creando cuenta..." />
       ) : (
         <>
-          <h1>Sign Up</h1>
+          <h1>Registrarse</h1>
 
           <form onSubmit={handleSignupSubmit}>
-            <label>Email:</label>
+            <label>Correo Electrónico:</label>
             <input 
               type="email"
               name="email"
@@ -61,7 +62,7 @@ function SignupPage(props) {
               onChange={handleEmail}
             />
 
-            <label>Password:</label>
+            <label>Contraseña:</label>
             <input 
               type="password"
               name="password"
@@ -69,7 +70,7 @@ function SignupPage(props) {
               onChange={handlePassword}
             />
 
-            <label>Name:</label>
+            <label>Nombre:</label>
             <input 
               type="text"
               name="name"
@@ -77,13 +78,13 @@ function SignupPage(props) {
               onChange={handleName}
             />
 
-            <button type="submit">Sign Up</button>
+            <button type="submit">Registrarse</button>
           </form>
 
           { errorMessage && <p className="error-message">{errorMessage}</p> }
 
-          <p>Already have account?</p>
-          <Link to={"/login"}> Login</Link>
+          <p>¿Ya tienes una cuenta?</p>
+          <Link to="/login"> Iniciar Sesión</Link>
         </>
       )}
     </div>

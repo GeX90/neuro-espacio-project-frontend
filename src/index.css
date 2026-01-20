@@ -58,7 +58,7 @@ textarea {
 }
 
 nav {
-  background: #515f7d;
+  background: #615338;
   color: white;
   padding: 0px 20px;
   box-shadow: 0px 1px 2px gray;
@@ -80,16 +80,16 @@ nav li {
   box-shadow: 0px 2px 3px grey;
   margin: 0 auto;
   margin-bottom: 20px;
-  background: #94a7c8;
+  background: #d4c5b0;
   border-radius: 4px;
 }
 
 
 .SignupPage,
 .LoginPage {
-  background: #f9eec3;
-  border: 1px solid grey;
-  box-shadow: 0px 2px 3px grey;
+  background: #f5ede1;
+  border: 1px solid #615338;
+  box-shadow: 0px 2px 3px rgba(97, 83, 56, 0.3);
   width: 400px;
   text-align: center;
   margin: 0 auto;

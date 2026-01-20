@@ -19,7 +19,7 @@ function Navbar() {
 
       <div className="navbar-buttons">
         <Link to="/">
-          <button>Home</button>
+          <button>Inicio</button>
         </Link>
         
         {isLoggedIn && (
@@ -36,7 +36,7 @@ function Navbar() {
               <button>Editar Cita</button>
             </Link>
             
-            <button onClick={logOutUser}>Logout</button>
+            <button onClick={logOutUser}>Cerrar Sesión</button>
             <span>{user && user.name}</span>
           </>
         )}
@@ -46,13 +46,13 @@ function Navbar() {
             <Link to="/signup">
               <button>Pedir Cita</button>
             </Link>
-            <Link to="/signup"> <button>Sign Up</button> </Link>
-            <Link to="/login"> <button>Login</button> </Link>
+            <Link to="/signup"> <button>Registrarse</button> </Link>
+            <Link to="/login"> <button>Iniciar Sesión</button> </Link>
           </>
         )}
 
         <Link to="/about">
-          <button>About Us</button>
+          <button>Sobre Nosotros</button>
         </Link>
       </div>
     </nav>

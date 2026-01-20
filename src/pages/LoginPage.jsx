@@ -5,6 +5,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import Loader from "../components/Loader";
+import "./LoginPage.css";
 
 const API_URL = "http://localhost:5005";
 
@@ -57,10 +58,10 @@ function LoginPage(props) {
         <Loader message="Iniciando sesión..." />
       ) : (
         <>
-          <h1>Login</h1>
+          <h1>Iniciar Sesión</h1>
 
           <form onSubmit={handleLoginSubmit}>
-            <label>Email:</label>
+            <label>Correo Electrónico:</label>
             <input
               type="email"
               name="email"
@@ -68,7 +69,7 @@ function LoginPage(props) {
               onChange={handleEmail}
             />
 
-            <label>Password:</label>
+            <label>Contraseña:</label>
             <input
               type="password"
               name="password"
@@ -76,12 +77,12 @@ function LoginPage(props) {
               onChange={handlePassword}
             />
 
-            <button type="submit">Login</button>
+            <button type="submit">Iniciar Sesión</button>
           </form>
           { errorMessage && <p className="error-message">{errorMessage}</p> }
 
-          <p>Don't have an account yet?</p>
-          <Link to={"/signup"}> Sign Up</Link>
+          <p>¿No tienes cuenta todavía?</p>
+          <Link to="/signup"> Regístrate</Link>
         </>
       )}
     </div>

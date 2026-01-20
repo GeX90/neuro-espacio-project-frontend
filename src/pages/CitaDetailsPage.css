@@ -1,0 +1,232 @@
+.CitaDetailsPage {
+  min-height: calc(100vh - 140px);
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #f5ede1 0%, #e8dcc9 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cita-details-container {
+  width: 100%;
+  max-width: 700px;
+  background: white;
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.cita-details-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(90deg, #615338 0%, #7e3805 100%);
+}
+
+.cita-details-header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding-bottom: 24px;
+  border-bottom: 2px solid #f5ede1;
+}
+
+.cita-details-header h2 {
+  color: #615338;
+  font-size: 2.2rem;
+  margin: 0 0 12px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.cita-details-header h2::before {
+  content: '📋';
+  font-size: 2rem;
+}
+
+.cita-details-subtitle {
+  color: #7e3805;
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.cita-details-body {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.cita-detail-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px;
+  background: #f8f6f3;
+  border-radius: 10px;
+  border-left: 4px solid #615338;
+  transition: all 0.3s ease;
+}
+
+.cita-detail-item:hover {
+  background: #f0ebe5;
+  transform: translateX(4px);
+}
+
+.cita-detail-icon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #615338 0%, #7e3805 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.cita-detail-content {
+  flex: 1;
+}
+
+.cita-detail-label {
+  color: #7e3805;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 8px 0;
+}
+
+.cita-detail-value {
+  color: #333;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.cita-detail-value.motivo-text {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.8;
+  white-space: pre-wrap;
+}
+
+.cita-details-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 2px solid #f5ede1;
+}
+
+.cita-details-actions button,
+.cita-details-actions a {
+  flex: 1;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-editar {
+  background: linear-gradient(135deg, #615338 0%, #7e3805 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(97, 83, 56, 0.3);
+}
+
+.btn-editar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(97, 83, 56, 0.4);
+}
+
+.btn-editar::before {
+  content: '✏️';
+}
+
+.btn-volver {
+  background: white;
+  color: #615338;
+  border: 2px solid #615338;
+}
+
+.btn-volver:hover {
+  background: #f5ede1;
+  transform: translateY(-2px);
+}
+
+.btn-volver::before {
+  content: '←';
+  font-size: 1.2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .CitaDetailsPage {
+    padding: 30px 15px;
+  }
+
+  .cita-details-container {
+    padding: 30px 25px;
+  }
+
+  .cita-details-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .cita-detail-item {
+    padding: 16px;
+  }
+
+  .cita-detail-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .CitaDetailsPage {
+    padding: 20px 10px;
+  }
+
+  .cita-details-container {
+    padding: 25px 20px;
+  }
+
+  .cita-details-header h2 {
+    font-size: 1.6rem;
+    flex-direction: column;
+  }
+
+  .cita-details-actions {
+    flex-direction: column;
+  }
+
+  .cita-details-actions button,
+  .cita-details-actions a {
+    width: 100%;
+  }
+
+  .cita-detail-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}

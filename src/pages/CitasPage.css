@@ -1,0 +1,243 @@
+.CitasPage {
+  min-height: calc(100vh - 140px);
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #f5ede1 0%, #e8dcc9 100%);
+}
+
+.CitasPage-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.CitasPage-header h1 {
+  color: #615338;
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.CitasPage-header .subtitle {
+  color: #7e3805;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.citas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.cita-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.cita-card-link:hover {
+  transform: translateY(-4px);
+}
+
+.cita-card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.cita-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #615338 0%, #7e3805 100%);
+}
+
+.cita-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  border-color: #615338;
+}
+
+.cita-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #f5ede1;
+}
+
+.cita-card-icon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #615338 0%, #7e3805 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.cita-card-date {
+  flex: 1;
+}
+
+.cita-card-date .day {
+  color: #615338;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.cita-card-date .full-date {
+  color: #7e3805;
+  font-size: 0.9rem;
+  margin: 4px 0 0 0;
+}
+
+.cita-card-body {
+  margin-top: 16px;
+}
+
+.cita-card-time {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  color: #615338;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.cita-card-time::before {
+  content: '🕐';
+  font-size: 1.2rem;
+}
+
+.cita-card-motivo {
+  color: #333;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 12px 0 0 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cita-card-motivo strong {
+  color: #615338;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.CitasPage-empty {
+  text-align: center;
+  padding: 60px 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.CitasPage-empty-icon {
+  font-size: 5rem;
+  margin-bottom: 20px;
+  opacity: 0.5;
+}
+
+.CitasPage-empty h2 {
+  color: #615338;
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
+
+.CitasPage-empty p {
+  color: #7e3805;
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
+
+.CitasPage-empty .btn-create {
+  display: inline-block;
+  padding: 14px 32px;
+  background: linear-gradient(135deg, #615338 0%, #7e3805 100%);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(97, 83, 56, 0.3);
+}
+
+.CitasPage-empty .btn-create:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(97, 83, 56, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .CitasPage {
+    padding: 30px 15px;
+  }
+
+  .CitasPage-header h1 {
+    font-size: 2rem;
+  }
+
+  .CitasPage-header .subtitle {
+    font-size: 1.1rem;
+  }
+
+  .citas-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 0 10px;
+  }
+
+  .cita-card {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .CitasPage {
+    padding: 20px 10px;
+  }
+
+  .CitasPage-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .cita-card {
+    padding: 16px;
+  }
+
+  .cita-card-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+
+  .cita-card-date .day {
+    font-size: 1.1rem;
+  }
+
+  .CitasPage-empty h2 {
+    font-size: 1.6rem;
+  }
+}
