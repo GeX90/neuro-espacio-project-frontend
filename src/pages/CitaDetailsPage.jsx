@@ -32,14 +32,9 @@ function CitaDetailsPage() {
     }
 
     const storedToken = localStorage.getItem("authToken");
-    
-    // Si el usuario es admin, usar la ruta de admin, sino usar la ruta normal
-    const endpoint = user?.isAdmin 
-      ? `${API_URL}/api/admin/citas/${id}` 
-      : `${API_URL}/api/citas/${id}`;
 
     axios
-      .get(endpoint, {
+      .get(`${API_URL}/api/citas/${id}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((res) => setCita(res.data))

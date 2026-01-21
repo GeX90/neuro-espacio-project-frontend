@@ -83,7 +83,7 @@ function AdminCitasPage() {
         try {
             const storedToken = localStorage.getItem('authToken');
             await axios.put(
-                `${API_URL}/api/admin/citas/${citaId}`,
+                `${API_URL}/api/citas/${citaId}`,
                 formData,
                 {
                     headers: { Authorization: `Bearer ${storedToken}` }
@@ -113,7 +113,7 @@ function AdminCitasPage() {
             try {
                 const storedToken = localStorage.getItem('authToken');
                 await axios.delete(
-                    `${API_URL}/api/admin/citas/${citaId}`,
+                    `${API_URL}/api/citas/${citaId}`,
                     {
                         headers: { Authorization: `Bearer ${storedToken}` }
                     }
