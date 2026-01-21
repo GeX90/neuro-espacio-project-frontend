@@ -54,7 +54,7 @@ function LoginPage(props) {
         const userData = verifyResponse.data;
         
         // If user is admin, redirect to admin panel
-        if (userData.isAdmin) {
+        if (userData.role === 'ADMIN') {
           navigate('/admin/users');
           return;
         }

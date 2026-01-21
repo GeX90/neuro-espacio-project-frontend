@@ -24,7 +24,7 @@ function Navbar() {
         
         {isLoggedIn && (
           <>
-            {user?.isAdmin ? (
+            {user?.role === 'ADMIN' ? (
               // Opciones para Admin
               <>
                 <Link to="/admin/users">

@@ -23,7 +23,7 @@ function AdminUsersPage() {
         }
 
         // Verificar si el usuario es admin
-        if (!user.isAdmin) {
+        if (user.role !== 'ADMIN') {
             navigate("/");
             return;
         }
@@ -105,8 +105,8 @@ function AdminUsersPage() {
                                     <td>{userItem.name}</td>
                                     <td>{userItem.email}</td>
                                     <td>
-                                        <span className={`role-badge ${userItem.isAdmin ? 'admin' : 'user'}`}>
-                                            {userItem.isAdmin ? 'Admin' : 'Usuario'}
+                                        <span className={`role-badge ${userItem.role === 'ADMIN' ? 'admin' : 'user'}`}>
+                                            {userItem.role === 'ADMIN' ? 'Admin' : 'Usuario'}
                                         </span>
                                     </td>
                                     <td>

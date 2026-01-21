@@ -38,7 +38,7 @@ function AdminCitasPage() {
             return;
         }
 
-        if (!user.isAdmin) {
+        if (user.role !== 'ADMIN') {
             navigate("/");
             return;
         }
