@@ -40,20 +40,38 @@ function LoginPage(props) {
         
         // Verify the token by sending a request 
         // to the server's JWT validation endpoint. 
-        authenticateUser();
+        return authenticateUser();
+      })
+      .then(() => {
+        // Wait for authentication to complete and check if user is admin
+        const storedToken = localStorage.getItem('authToken');
         
-        // Check if user has appointments
-        return axios.get(`${API_URL}/api/citas`, {
-          headers: { Authorization: `Bearer ${response.data.authToken}` }
+        return axios.get(`${API_URL}/auth/verify`, {
+          headers: { Authorization: `Bearer ${storedToken}` }
         });
       })
-      .then((citasResponse) => {
-        // Redirect based on whether user has appointments
-        if (citasResponse.data && citasResponse.data.length > 0) {
-          navigate('/citas');
-        } else {
-          navigate('/crear-cita');
+      .then((verifyResponse) => {
+        const userData = verifyResponse.data;
+        
+        // If user is admin, redirect to admin panel
+        if (userData.isAdmin) {
+          navigate('/admin/users');
+          return;
         }
+        
+        // If user is not admin, check if they have appointments
+        const storedToken = localStorage.getItem('authToken');
+        return axios.get(`${API_URL}/api/citas`, {
+          headers: { Authorization: `Bearer ${storedToken}` }
+        })
+        .then((citasResponse) => {
+          // Redirect based on whether user has appointments
+          if (citasResponse.data && citasResponse.data.length > 0) {
+            navigate('/citas');
+          } else {
+            navigate('/crear-cita');
+          }
+        });
       })
       .catch((error) => {
         const errorDescription = error.response?.data?.message || "Error al iniciar sesión";
