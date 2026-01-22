@@ -26,8 +26,8 @@ function App() {
         <Route path="/login" element={<IsAnon> <LoginPage /> </IsAnon>} />
         <Route path="/citas" element={<IsPrivate> <CitasPage/> </IsPrivate>} />
         <Route path="/citas/:id" element={<IsPrivate> <CitaDetailsPage/> </IsPrivate>} />
-        <Route path="/crear-cita" element={<IsPrivate> <CreateCitasPage /> </IsPrivate>} />
-        <Route path="/editar-citas" element={<IsPrivate> <EditCitasPage /> </IsPrivate>} />
+        <Route path="/citas/create" element={<IsPrivate> <CreateCitasPage /> </IsPrivate>} />
+        <Route path="/citas/edit/:id" element={<IsPrivate> <EditCitasPage /> </IsPrivate>} />
         <Route path="/about" element={<AboutUsPage />} />
         
         {/* Rutas de Admin */}
