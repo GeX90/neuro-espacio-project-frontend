@@ -183,7 +183,7 @@
   margin-bottom: 0.25rem;
 }
 
-/* Botones de acciones en cards */
+/* Botón de detalles en cards */
 .cita-card-actions {
   display: flex;
   gap: 0.5rem;
@@ -192,8 +192,7 @@
   border-top: 2px solid #BFDAD5;
 }
 
-.btn-edit,
-.btn-delete {
+.btn-details {
   flex: 1;
   padding: 0.625rem 1rem;
   border-radius: 50px;
@@ -204,33 +203,15 @@
   text-decoration: none;
   text-align: center;
   border: none;
-}
-
-.btn-edit {
   background: #00788C;
   color: white;
   box-shadow: 0 2px 8px rgba(0, 120, 140, 0.25);
 }
 
-.btn-edit:hover {
+.btn-details:hover {
   background: #005f6f;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 120, 140, 0.35);
-}
-
-.btn-delete {
-  background: white;
-  color: #3f3f3a;
-  border: 2px solid #BFDAD5;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-}
-
-.btn-delete:hover {
-  background: #F9FAF7;
-  border-color: #5B6B5E;
-  color: #3f3f3a;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
 /* Tablet Breakpoint */
