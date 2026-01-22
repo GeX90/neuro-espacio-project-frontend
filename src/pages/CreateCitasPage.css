@@ -5,12 +5,12 @@
   align-items: center;
   justify-content: center;
   padding: 40px 20px;
-  background: linear-gradient(135deg, #f5ede1 0%, #e8dcc9 100%);
+  background: linear-gradient(135deg, #BFDAD5 0%, #A8B8A0 100%);
 }
 
 .create-citas-container h1 {
   text-align: center;
-  color: #615338;
+  color: #00788C;
   font-size: 2.5rem;
   margin-bottom: 30px;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
@@ -47,7 +47,7 @@
 
 .create-citas-container label {
   display: block;
-  color: #615338;
+  color: #3f3f3a;
   font-weight: 600;
   font-size: 1rem;
   margin-bottom: 8px;
@@ -60,7 +60,7 @@
   max-width: 100%;
   padding: 12px 16px;
   margin: 0;
-  border: 2px solid #e0d5c7;
+  border: 2px solid #BFDAD5;
   border-radius: 8px;
   font-size: 1rem;
   font-family: inherit;
@@ -76,15 +76,15 @@
 .create-citas-container input:focus,
 .create-citas-container textarea:focus {
   outline: none;
-  border-color: #615338;
-  box-shadow: 0 0 0 3px rgba(97, 83, 56, 0.1);
+  border-color: #00788C;
+  box-shadow: 0 0 0 3px rgba(0, 120, 140, 0.15);
 }
 
 .create-citas-container button[type="submit"] {
   width: 100%;
   padding: 14px 20px;
   margin-top: 24px;
-  background: linear-gradient(135deg, #615338 0%, #7e3805 100%);
+  background: #00788C;
   color: white;
   border: none;
   border-radius: 8px;
@@ -92,12 +92,13 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(97, 83, 56, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 120, 140, 0.3);
 }
 
 .create-citas-container button[type="submit"]:hover:not(:disabled) {
+  background: #005f6f;
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(97, 83, 56, 0.4);
+  box-shadow: 0 6px 16px rgba(0, 120, 140, 0.4);
 }
 
 .create-citas-container button[type="submit"]:active {

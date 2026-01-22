@@ -96,6 +96,27 @@ function CitasPage() {
                                             {elm.motivo}
                                         </p>
                                     </div>
+                                    <div className="cita-card-actions">
+                                        <Link to={`/citas/edit/${elm._id}`} className="btn-edit" onClick={(e) => e.stopPropagation()}>
+                                            ✏️ Editar
+                                        </Link>
+                                        <button className="btn-delete" onClick={(e) => {
+                                            e.preventDefault();
+                                            e.stopPropagation();
+                                            if (window.confirm('¿Estás seguro de que quieres eliminar esta cita?')) {
+                                                const storedToken = localStorage.getItem('authToken');
+                                                axios.delete(`${API_URL}/api/citas/${elm._id}`, {
+                                                    headers: { Authorization: `Bearer ${storedToken}` }
+                                                })
+                                                .then(() => {
+                                                    setCitas(citas.filter(c => c._id !== elm._id));
+                                                })
+                                                .catch(err => console.error('Error eliminando cita:', err));
+                                            }
+                                        }}>
+                                            🗑️ Eliminar
+                                        </button>
+                                    </div>
                                 </div>
                             </Link>
                         );

@@ -112,13 +112,14 @@
   gap: 1rem;
   margin-top: 2rem;
   padding-top: 1.5rem;
-  border-top: 2px solid #e8eef3;
+  border-top: 2px solid #BFDAD5;
+  flex-wrap: wrap;
 }
 
-.btn-volver {
+.btn-volver,
+.btn-edit-detail,
+.btn-delete-detail {
   padding: 0.875rem 2rem;
-  background: linear-gradient(135deg, #7c9bb5 0%, #6b8ca8 100%);
-  color: white;
   border: none;
   border-radius: 50px;
   font-size: 1rem;
@@ -127,13 +128,42 @@
   transition: all 0.3s ease;
   text-decoration: none;
   text-align: center;
-  box-shadow: 0 4px 12px rgba(124, 155, 181, 0.3);
+}
+
+.btn-volver {
+  background: #5B6B5E;
+  color: white;
+  box-shadow: 0 4px 12px rgba(91, 107, 94, 0.3);
 }
 
 .btn-volver:hover {
-  background: linear-gradient(135deg, #6b8ca8 0%, #5a7a92 100%);
+  background: #4a5a4d;
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(124, 155, 181, 0.4);
+  box-shadow: 0 6px 16px rgba(91, 107, 94, 0.4);
+}
+
+.btn-edit-detail {
+  background: #00788C;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 120, 140, 0.3);
+}
+
+.btn-edit-detail:hover {
+  background: #005f6f;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 120, 140, 0.4);
+}
+
+.btn-delete-detail {
+  background: #dc3545;
+  color: white;
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+}
+
+.btn-delete-detail:hover {
+  background: #c82333;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(220, 53, 69, 0.4);
 }
 
 /* Tablet Breakpoint */

@@ -84,6 +84,27 @@ function CitaDetailsPage() {
 
         <div className="cita-details-actions">
           <Link to="/citas" className="btn-volver">Volver a Mis Citas</Link>
+          <Link to={`/citas/edit/${id}`} className="btn-edit-detail">✏️ Editar Cita</Link>
+          <button 
+            className="btn-delete-detail" 
+            onClick={() => {
+              if (window.confirm('¿Estás seguro de que quieres eliminar esta cita?')) {
+                const storedToken = localStorage.getItem('authToken');
+                axios.delete(`${API_URL}/api/citas/${id}`, {
+                  headers: { Authorization: `Bearer ${storedToken}` }
+                })
+                .then(() => {
+                  navigate('/citas');
+                })
+                .catch(err => {
+                  console.error('Error eliminando cita:', err);
+                  setError('Error al eliminar la cita');
+                });
+              }
+            }}
+          >
+            🗑️ Eliminar Cita
+          </button>
         </div>
       </div>
     </div>
