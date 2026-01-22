@@ -17,59 +17,68 @@ function Navbar() {
         <span className="navbar-title">NEURO ESPACIO</span>
       </Link>
 
-      <div className="navbar-buttons">
-        <Link to="/">
-          <button>Inicio</button>
-        </Link>
-        
+      <div className="navbar-navigation">
+        {!isLoggedIn && (
+          <Link to="/signup">
+            <button>Reservar Cita</button>
+          </Link>
+        )}
+
         {isLoggedIn && (
           <>
-            {user?.role === 'ADMIN' ? (
+            {user?.role === 'admin' ? (
               // Opciones para Admin
               <>
-                <Link to="/admin/users">
-                  <button>Usuarios</button>
+                <Link to="/admin/citas">
+                  <button>Gestionar Citas</button>
                 </Link>
 
-                <Link to="/admin/citas">
-                  <button>Todas las Citas</button>
+                <Link to="/admin/users">
+                  <button>Pacientes</button>
+                </Link>
+
+                <Link to="/citas">
+                  <button>Calendario</button>
                 </Link>
               </>
             ) : (
               // Opciones para Usuario normal
               <>
                 <Link to="/citas">
-                  <button>Citas</button>
+                  <button>Mis Citas</button>
                 </Link>
 
-                <Link to="/crear-cita">
-                  <button>Pedir Cita</button>
-                </Link>
-
-                <Link to="/editar-citas">
-                  <button>Editar Cita</button>
+                <Link to="/citas/create">
+                  <button>Nueva Cita</button>
                 </Link>
               </>
             )}
-            
-            <button onClick={logOutUser}>Cerrar Sesión</button>
-            <span>{user && user.name}</span>
-          </>
-        )}
-
-        {!isLoggedIn && (
-          <>
-            <Link to="/signup">
-              <button>Pedir Cita</button>
-            </Link>
-            <Link to="/signup"> <button>Registrarse</button> </Link>
-            <Link to="/login"> <button>Iniciar Sesión</button> </Link>
           </>
         )}
 
         <Link to="/about">
           <button>Sobre Nosotros</button>
         </Link>
+      </div>
+
+      <div className="navbar-user-actions">
+        {isLoggedIn && (
+          <>
+            <span>{user && user.name}</span>
+            <button onClick={logOutUser}>Cerrar Sesión</button>
+          </>
+        )}
+
+        {!isLoggedIn && (
+          <>
+            <Link to="/login">
+              <button>Iniciar Sesión</button>
+            </Link>
+            <Link to="/signup">
+              <button>Crear Cuenta</button>
+            </Link>
+          </>
+        )}
       </div>
     </nav>
   );

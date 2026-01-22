@@ -1,37 +1,42 @@
+/* ==========================================
+   LoginPage - Mobile-First Wellness Design
+   ========================================== */
+
 .LoginPage {
-  min-height: calc(100vh - 140px);
+  min-height: calc(100vh - 80px);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 40px 20px;
-  background: linear-gradient(135deg, #8B6F47 0%, #615338 100%);
+  padding: 6rem 1rem 2rem;
+  background: linear-gradient(135deg, #BFDAD5 0%, #A8B8A0 100%);
 }
 
 .LoginPage h1 {
-  color: white;
-  font-size: 2.5rem;
+  color: #00788C;
+  font-size: 2rem;
   text-align: center;
-  margin-bottom: 30px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  margin-bottom: 2rem;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .LoginPage form {
   width: 100%;
   max-width: 450px;
   background: white;
-  border-radius: 12px;
-  padding: 40px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  border-radius: 24px;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
 .LoginPage label {
   display: block;
-  color: #615338;
+  color: #3f3f3a;
   font-weight: 600;
-  font-size: 1rem;
-  margin-bottom: 8px;
-  margin-top: 16px;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
   width: 100%;
 }
 
@@ -42,10 +47,10 @@
 .LoginPage input {
   width: 100%;
   max-width: 100%;
-  padding: 12px 16px;
-  margin: 0 0 8px 0;
-  border: 2px solid #e0d5c7;
-  border-radius: 8px;
+  padding: 0.875rem 1rem;
+  margin: 0 0 0.5rem 0;
+  border: 2px solid #BFDAD5;
+  border-radius: 12px;
   font-size: 1rem;
   transition: all 0.3s ease;
   box-sizing: border-box;
@@ -53,28 +58,29 @@
 
 .LoginPage input:focus {
   outline: none;
-  border-color: #615338;
-  box-shadow: 0 0 0 3px rgba(97, 83, 56, 0.1);
+  border-color: #00788C;
+  box-shadow: 0 0 0 3px rgba(0, 120, 140, 0.15);
 }
 
 .LoginPage button[type="submit"] {
   width: 100%;
-  padding: 14px 20px;
-  margin-top: 24px;
-  background: linear-gradient(135deg, #615338 0%, #7e3805 100%);
+  padding: 1rem 1.5rem;
+  margin-top: 1.5rem;
+  background: #00788C;
   color: white;
   border: none;
-  border-radius: 8px;
-  font-size: 1.1rem;
+  border-radius: 50px;
+  font-size: 1.05rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(97, 83, 56, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 120, 140, 0.3);
 }
 
 .LoginPage button[type="submit"]:hover {
+  background: #005f6f;
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(97, 83, 56, 0.4);
+  box-shadow: 0 6px 16px rgba(0, 120, 140, 0.4);
 }
 
 .LoginPage button[type="submit"]:active {
@@ -82,12 +88,12 @@
 }
 
 .LoginPage .error-message {
-  background: #f8d7da;
-  color: #721c24;
-  padding: 12px 16px;
-  border-radius: 8px;
-  border: 1px solid #f5c6cb;
-  margin-top: 16px;
+  background: #fee;
+  color: #c33;
+  padding: 0.875rem 1rem;
+  border-radius: 12px;
+  border: 2px solid #fcc;
+  margin-top: 1rem;
   text-align: center;
   font-size: 0.95rem;
   width: 100%;
@@ -97,7 +103,7 @@
 .LoginPage p {
   color: white;
   text-align: center;
-  margin-top: 24px;
+  margin-top: 1.5rem;
   font-size: 1rem;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }

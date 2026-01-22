@@ -1,94 +1,130 @@
+/* ==========================================
+   CitasPage - Mobile-First Wellness Design
+   ========================================== */
+
 .CitasPage {
-  min-height: calc(100vh - 140px);
-  padding: 40px 20px;
-  background: linear-gradient(135deg, #f5ede1 0%, #e8dcc9 100%);
+  min-height: calc(100vh - 80px);
+  padding: 6rem 1rem 2rem;
+  background: #F9FAF7;
 }
 
 .CitasPage-header {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 2rem;
 }
 
 .CitasPage-header h1 {
-  color: #615338;
-  font-size: 2.5rem;
-  margin-bottom: 16px;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  color: #00788C;
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
 }
 
 .CitasPage-header .subtitle {
-  color: #7e3805;
-  font-size: 1.2rem;
+  color: #5B6B5E;
+  font-size: 1rem;
   font-weight: 500;
 }
 
+/* Empty State */
+.CitasPage-empty {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  max-width: 500px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.CitasPage-empty-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.CitasPage-empty h2 {
+  color: #00788C;
+  font-size: 1.5rem;
+  margin: 0 0 0.75rem 0;
+  font-weight: 700;
+}
+
+.CitasPage-empty p {
+  color: #5B6B5E;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0 0 1.5rem 0;
+}
+
+.btn-create {
+  display: inline-block;
+  padding: 0.875rem 2rem;
+  background: #00788C;
+  color: white;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 120, 140, 0.3);
+}
+
+.btn-create:hover {
+  background: #005f6f;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 120, 140, 0.4);
+}
+
+/* Citas Grid */
 .citas-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 24px;
-  max-width: 1400px;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
 }
 
 .cita-card-link {
   text-decoration: none;
   color: inherit;
   display: block;
-  transition: transform 0.3s ease;
-}
-
-.cita-card-link:hover {
-  transform: translateY(-4px);
 }
 
 .cita-card {
   background: white;
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   cursor: pointer;
   transition: all 0.3s ease;
-  border: 2px solid transparent;
-  position: relative;
-  overflow: hidden;
-}
-
-.cita-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 4px;
-  height: 100%;
-  background: linear-gradient(180deg, #615338 0%, #7e3805 100%);
+  border-left: 4px solid #00788C;
 }
 
 .cita-card:hover {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-  border-color: #615338;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
 .cita-card-header {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 16px;
-  padding-bottom: 12px;
-  border-bottom: 2px solid #f5ede1;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #BFDAD5;
 }
 
 .cita-card-icon {
-  width: 48px;
-  height: 48px;
-  background: linear-gradient(135deg, #615338 0%, #7e3805 100%);
+  width: 56px;
+  height: 56px;
+  background: #BFDAD5;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
-  font-size: 1.5rem;
-  font-weight: bold;
+  color: #00788C;
+  font-size: 1.75rem;
+  font-weight: 700;
   flex-shrink: 0;
 }
 
@@ -97,106 +133,64 @@
 }
 
 .cita-card-date .day {
-  color: #615338;
-  font-size: 1.3rem;
-  font-weight: 700;
-  margin: 0;
-  line-height: 1.2;
+  color: #5B6B5E;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 0.25rem 0;
 }
 
 .cita-card-date .full-date {
-  color: #7e3805;
-  font-size: 0.9rem;
-  margin: 4px 0 0 0;
+  color: #3f3f3a;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+  text-transform: capitalize;
 }
 
 .cita-card-body {
-  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 .cita-card-time {
+  color: #5a7a92;
+  font-size: 1.25rem;
+  font-weight: 700;
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 12px;
-  color: #615338;
-  font-size: 1.1rem;
-  font-weight: 600;
+  gap: 0.5rem;
 }
 
 .cita-card-time::before {
   content: '🕐';
-  font-size: 1.2rem;
+  font-size: 1.25rem;
 }
 
 .cita-card-motivo {
-  color: #333;
+  color: #6a7a8a;
   font-size: 0.95rem;
   line-height: 1.6;
-  margin: 12px 0 0 0;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  margin: 0;
 }
 
 .cita-card-motivo strong {
-  color: #615338;
-  display: block;
-  margin-bottom: 6px;
-}
-
-.CitasPage-empty {
-  text-align: center;
-  padding: 60px 20px;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.CitasPage-empty-icon {
-  font-size: 5rem;
-  margin-bottom: 20px;
-  opacity: 0.5;
-}
-
-.CitasPage-empty h2 {
-  color: #615338;
-  font-size: 2rem;
-  margin-bottom: 16px;
-}
-
-.CitasPage-empty p {
-  color: #7e3805;
-  font-size: 1.1rem;
-  margin-bottom: 30px;
-}
-
-.CitasPage-empty .btn-create {
-  display: inline-block;
-  padding: 14px 32px;
-  background: linear-gradient(135deg, #615338 0%, #7e3805 100%);
-  color: white;
-  text-decoration: none;
-  border-radius: 8px;
+  color: #4a6a82;
   font-weight: 600;
-  font-size: 1.1rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(97, 83, 56, 0.3);
+  display: block;
+  margin-bottom: 0.25rem;
 }
 
-.CitasPage-empty .btn-create:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(97, 83, 56, 0.4);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
+/* Tablet Breakpoint */
+@media (min-width: 768px) {
   .CitasPage {
-    padding: 30px 15px;
+    padding: 7rem 2rem 3rem;
   }
 
   .CitasPage-header h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 
   .CitasPage-header .subtitle {
@@ -204,40 +198,31 @@
   }
 
   .citas-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-    padding: 0 10px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
   }
 
   .cita-card {
-    padding: 20px;
+    padding: 2rem;
   }
 }
 
-@media (max-width: 480px) {
+/* Desktop Breakpoint */
+@media (min-width: 1024px) {
   .CitasPage {
-    padding: 20px 10px;
+    padding: 8rem 3rem 4rem;
   }
 
   .CitasPage-header h1 {
-    font-size: 1.8rem;
+    font-size: 3rem;
   }
 
-  .cita-card {
-    padding: 16px;
-  }
-
-  .cita-card-icon {
-    width: 40px;
-    height: 40px;
+  .CitasPage-header .subtitle {
     font-size: 1.2rem;
   }
 
-  .cita-card-date .day {
-    font-size: 1.1rem;
-  }
-
-  .CitasPage-empty h2 {
-    font-size: 1.6rem;
+  .citas-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
   }
 }

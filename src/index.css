@@ -11,6 +11,7 @@ html {
 body {
   margin: 0;
   padding: 0;
+  background: #F9FAF7;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -25,7 +26,7 @@ body {
 }
 
 .App {
-  padding-top: 110px;
+  padding-top: 0;
   flex: 1;
   display: flex;
   flex-direction: column;

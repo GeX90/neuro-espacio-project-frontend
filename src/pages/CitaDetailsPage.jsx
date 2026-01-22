@@ -83,8 +83,7 @@ function CitaDetailsPage() {
         </div>
 
         <div className="cita-details-actions">
-          <button className="btn-editar" onClick={() => navigate("/editar-citas")}>Editar Cita</button>
-          <Link to="/citas" className="btn-volver">Volver</Link>
+          <Link to="/citas" className="btn-volver">Volver a Mis Citas</Link>
         </div>
       </div>
     </div>

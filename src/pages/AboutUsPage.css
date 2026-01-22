@@ -1,136 +1,163 @@
+/* ==========================================
+   AboutUsPage - Mobile-First Wellness Design
+   ========================================== */
+
 .AboutUsPage {
-    background: linear-gradient(135deg, #8B6F47 0%, #615338 100%);
+    background: linear-gradient(135deg, #BFDAD5 0%, #A8B8A0 100%);
     min-height: 100vh;
-    padding: 40px 20px;
+    padding-top: 6rem;
+    padding-bottom: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin: 0;
 }
 
 .about-container {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
     background: white;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 2rem 1.5rem;
+    border-radius: 24px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
 .AboutUsPage h1 {
-    color: #615338;
-    font-size: 2.5rem;
+    color: #00788C;
+    font-size: 2rem;
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
 }
 
 .AboutUsPage h2 {
-    color: #7e3805;
-    font-size: 1.8rem;
-    margin-top: 30px;
-    margin-bottom: 15px;
-    border-bottom: 2px solid #615338;
-    padding-bottom: 10px;
+    color: #00788C;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    border-bottom: 3px solid #BFDAD5;
+    padding-bottom: 0.75rem;
+    font-weight: 700;
 }
 
 .AboutUsPage p {
-    color: #333;
+    color: #3f3f3a;
     font-size: 1rem;
-    line-height: 1.6;
-    margin-bottom: 15px;
-    text-align: justify;
+    line-height: 1.7;
+    margin-bottom: 1rem;
 }
 
 .AboutUsPage ul {
     list-style: none;
     padding: 0;
-    margin: 20px 0;
+    margin: 1.5rem 0;
 }
 
 .AboutUsPage li {
-    color: #333;
+    color: #3f3f3a;
     font-size: 1rem;
     line-height: 1.8;
-    padding: 10px 0;
-    padding-left: 30px;
+    padding: 0.875rem 0 0.875rem 2.5rem;
     position: relative;
+    border-radius: 12px;
+    margin-bottom: 0.5rem;
+    transition: background 0.3s ease;
+}
+
+.AboutUsPage li:hover {
+    background: #F9FAF7;
 }
 
 .AboutUsPage li:before {
     content: "✓";
-    color: #615338;
-    font-weight: bold;
-    font-size: 1.2rem;
+    color: #00788C;
+    font-weight: 700;
+    font-size: 1.5rem;
     position: absolute;
-    left: 0;
+    left: 0.5rem;
 }
 
 .developer-links {
     display: flex;
-    gap: 15px;
-    margin-top: 15px;
+    gap: 1rem;
+    margin-top: 1.5rem;
     flex-wrap: wrap;
 }
 
 .dev-link {
     display: inline-block;
-    padding: 10px 20px;
-    background: linear-gradient(135deg, #615338 0%, #7e3805 100%);
+    padding: 0.875rem 1.75rem;
+    background: #00788C;
     color: white;
     text-decoration: none;
-    border-radius: 5px;
-    font-weight: 500;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 120, 140, 0.3);
 }
 
 .dev-link:hover {
+    background: #005f6f;
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 16px rgba(0, 120, 140, 0.4);
 }
 
-/* Responsive para tablets */
-@media (max-width: 768px) {
-    .about-container {
-        padding: 30px;
-    }
-
-    .AboutUsPage h1 {
-        font-size: 2rem;
-    }
-
-    .AboutUsPage h2 {
-        font-size: 1.5rem;
-    }
-
-    .AboutUsPage p {
-        font-size: 0.95rem;
-    }
-}
-
-/* Responsive para móviles */
-@media (max-width: 480px) {
+/* Tablet Breakpoint */
+@media (min-width: 768px) {
     .AboutUsPage {
-        padding: 20px 10px;
+        padding: 7rem 2rem 3rem;
     }
 
     .about-container {
-        padding: 20px;
-        border-radius: 8px;
+        padding: 3rem 2.5rem;
     }
 
     .AboutUsPage h1 {
-        font-size: 1.6rem;
-        margin-bottom: 20px;
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
     }
 
     .AboutUsPage h2 {
-        font-size: 1.2rem;
-        margin-top: 20px;
+        font-size: 1.75rem;
+        margin-top: 2.5rem;
     }
 
     .AboutUsPage p {
-        font-size: 0.9rem;
-        text-align: left;
+        font-size: 1.05rem;
     }
 
     .AboutUsPage li {
-        font-size: 0.9rem;
-        padding-left: 25px;
+        font-size: 1.05rem;
+        padding-left: 3rem;
+    }
+
+    .developer-links {
+        gap: 1.25rem;
+    }
+}
+
+/* Desktop Breakpoint */
+@media (min-width: 1024px) {
+    .AboutUsPage {
+        padding: 8rem 3rem 4rem;
+    }
+
+    .about-container {
+        padding: 4rem 3.5rem;
+    }
+
+    .AboutUsPage h1 {
+        font-size: 2.75rem;
+    }
+
+    .AboutUsPage h2 {
+        font-size: 2rem;
+    }
+
+    .AboutUsPage p {
+        font-size: 1.1rem;
+    }
+
+    .AboutUsPage li {
+        font-size: 1.1rem;
     }
 }

@@ -1,28 +1,180 @@
 import "./HomePage.css";
 import Calendar from "../components/Calendar";
 import { Link } from "react-router-dom";
+import { useContext, useState, useEffect } from "react";
+import { AuthContext } from "../context/auth.context";
+import axios from "axios";
+
+const API_URL = import.meta.env.VITE_API_URL;
 
 function HomePage() {
+    const { isLoggedIn, user } = useContext(AuthContext);
+    const [nextAppointment, setNextAppointment] = useState(null);
+    const [upcomingAppointments, setUpcomingAppointments] = useState([]);
+
+    // Fetch user's appointments if logged in
+    useEffect(() => {
+        if (isLoggedIn && user) {
+            const storedToken = localStorage.getItem('authToken');
+            
+            axios.get(`${API_URL}/citas`, {
+                headers: { Authorization: `Bearer ${storedToken}` }
+            })
+            .then(response => {
+                const citas = response.data;
+                const now = new Date();
+                const upcoming = citas
+                    .filter(cita => new Date(cita.fecha) > now && cita.estado !== 'Cancelada')
+                    .sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
+                
+                setUpcomingAppointments(upcoming);
+                if (upcoming.length > 0) {
+                    setNextAppointment(upcoming[0]);
+                }
+            })
+            .catch(err => console.log(err));
+        }
+    }, [isLoggedIn, user]);
+
+    const isAdmin = user?.role === 'admin';
     
     return (
         <div className="HomePage">
             <div className="home-content">
-                <div className="home-hero">
-                    <h1>NEURO ESPACIO</h1>
-                    <h2 className="home-main-message">Psicología para Ansiedad, Estrés y Autoestima</h2>
+                {/* Hero Section */}
+                <header className="home-hero">
+                    <h1 className="neuro-espacio-title">NEURO ESPACIO</h1>
+                    <h2 className="home-main-message">Psicología para tu Bienestar</h2>
                     <p className="home-subtitle">Acompañamiento profesional y cercano</p>
                     
                     <div className="home-cta-buttons">
-                        <Link to="/signup" className="btn-cta primary">
-                            Pide tu Cita
-                        </Link>
-                        <Link to="/about" className="btn-cta secondary">
-                            Conoce más
-                        </Link>
+                        {!isLoggedIn ? (
+                            <>
+                                <Link to="/signup" className="btn-cta primary">
+                                    Reservar Cita
+                                </Link>
+                                <Link to="/about" className="btn-cta secondary">
+                                    Conoce más
+                                </Link>
+                            </>
+                        ) : (
+                            <>
+                                <Link to="/citas/create" className="btn-cta primary">
+                                    Reservar Cita
+                                </Link>
+                                <Link to="/citas" className="btn-cta secondary">
+                                    Mis Citas
+                                </Link>
+                            </>
+                        )}
                     </div>
-                </div>
+                </header>
 
-                <div className="professional-section">
+                {/* Patient Quick Actions - Only for logged-in non-admin users */}
+                {isLoggedIn && !isAdmin && (
+                    <section className="patient-quick-actions">
+                        <h3 className="section-title-small">Acceso Rápido</h3>
+                        
+                        {nextAppointment ? (
+                            <div className="quick-action-card next-appointment">
+                                <div className="card-header">
+                                    <span className="card-icon">📅</span>
+                                    <h4>Próxima Cita</h4>
+                                </div>
+                                <div className="appointment-details">
+                                    <p className="appointment-date">
+                                        {new Date(nextAppointment.fecha).toLocaleDateString('es-ES', {
+                                            weekday: 'long',
+                                            year: 'numeric',
+                                            month: 'long',
+                                            day: 'numeric'
+                                        })}
+                                    </p>
+                                    <p className="appointment-time">
+                                        {new Date(nextAppointment.fecha).toLocaleTimeString('es-ES', {
+                                            hour: '2-digit',
+                                            minute: '2-digit'
+                                        })}
+                                    </p>
+                                    {nextAppointment.modalidad && (
+                                        <p className="appointment-modality">
+                                            {nextAppointment.modalidad === 'Presencial' ? '🏥 Presencial' : '💻 Online'}
+                                        </p>
+                                    )}
+                                </div>
+                                <div className="card-actions">
+                                    <Link to={`/citas/${nextAppointment._id}`} className="btn-action primary-action">
+                                        Ver Detalles
+                                    </Link>
+                                </div>
+                            </div>
+                        ) : (
+                            <div className="quick-action-card empty-state">
+                                <span className="card-icon">📅</span>
+                                <h4>Sin citas programadas</h4>
+                                <p>Reserva tu próxima sesión</p>
+                                <Link to="/citas/create" className="btn-action primary-action">
+                                    Reservar Ahora
+                                </Link>
+                            </div>
+                        )}
+
+                        <div className="quick-action-grid">
+                            <Link to="/citas" className="quick-action-card">
+                                <span className="card-icon">📋</span>
+                                <h4>Historial</h4>
+                                <p>Consulta tus sesiones</p>
+                            </Link>
+
+                            <Link to="/citas/create" className="quick-action-card">
+                                <span className="card-icon">➕</span>
+                                <h4>Nueva Cita</h4>
+                                <p>Reserva una sesión</p>
+                            </Link>
+
+                            <Link to="/about" className="quick-action-card">
+                                <span className="card-icon">👩‍⚕️</span>
+                                <h4>Terapeuta</h4>
+                                <p>Conoce más</p>
+                            </Link>
+                        </div>
+                    </section>
+                )}
+
+                {/* Admin Section - Only for admin users */}
+                {isLoggedIn && isAdmin && (
+                    <section className="admin-quick-actions">
+                        <h3 className="section-title-small">Panel Administrativo</h3>
+                        
+                        <div className="admin-grid">
+                            <Link to="/admin/citas" className="admin-card">
+                                <span className="admin-icon">📅</span>
+                                <h4>Gestionar Citas</h4>
+                                <p>Ver y administrar todas las citas</p>
+                            </Link>
+
+                            <Link to="/admin/users" className="admin-card">
+                                <span className="admin-icon">👥</span>
+                                <h4>Pacientes</h4>
+                                <p>Lista de pacientes registrados</p>
+                            </Link>
+
+                            <Link to="/citas" className="admin-card">
+                                <span className="admin-icon">📊</span>
+                                <h4>Calendario</h4>
+                                <p>Vista completa de citas</p>
+                            </Link>
+                        </div>
+
+                        <div className="admin-calendar-preview">
+                            <h4 className="calendar-preview-title">Vista de Disponibilidad</h4>
+                            <Calendar />
+                        </div>
+                    </section>
+                )}
+
+                {/* Therapist Info Section */}
+                <section className="professional-section">
                     <div className="professional-card">
                         <div className="professional-image">
                             <img src="/psicologaejemplo.jpg" alt="Psicóloga Profesional" />
@@ -31,186 +183,70 @@ function HomePage() {
                             <h3 className="professional-name">Dra. María Fernández</h3>
                             <p className="professional-title">Psicóloga Clínica y Neuropsicóloga</p>
                             
-                            <div className="professional-credentials">
-                                <div className="credential-item">
-                                    <span className="credential-icon">🎓</span>
-                                    <span>Licenciada en Psicología (UAM)</span>
-                                </div>
-                                <div className="credential-item">
-                                    <span className="credential-icon">🧠</span>
-                                    <span>Máster en Neuropsicología Clínica</span>
-                                </div>
-                                <div className="credential-item">
-                                    <span className="credential-icon">📋</span>
-                                    <span>Colegiada Nº M-12345</span>
-                                </div>
-                            </div>
-
                             <div className="professional-specialties">
-                                <h4>Especialidades</h4>
                                 <div className="specialty-tags">
                                     <span className="specialty-tag">Ansiedad</span>
                                     <span className="specialty-tag">Estrés</span>
                                     <span className="specialty-tag">Autoestima</span>
                                     <span className="specialty-tag">Depresión</span>
-                                    <span className="specialty-tag">Terapia de Pareja</span>
-                                    <span className="specialty-tag">Neuropsicología</span>
                                 </div>
                             </div>
 
                             <p className="professional-bio">
                                 Hola, soy María. Durante más de 10 años he acompañado a personas en sus procesos 
                                 de cambio y crecimiento personal. Mi enfoque combina la psicología clínica con 
-                                la neuropsicología para ofrecer un tratamiento integral y personalizado. 
-                                Creo firmemente que cada persona tiene dentro de sí los recursos necesarios para 
-                                superar sus dificultades, y mi papel es ayudarte a descubrirlos y potenciarlos. 
-                                Trabajaremos juntos en un ambiente de confianza, respeto y calidez.
+                                la neuropsicología para ofrecer un tratamiento integral y personalizado.
                             </p>
+                            
+                            <Link to="/about" className="btn-learn-more">
+                                Conoce más sobre mí
+                            </Link>
                         </div>
                     </div>
-                </div>
+                </section>
 
-                {/* Servicios Principales */}
-                <div className="services-section">
+                {/* Services Section */}
+                <section className="services-section">
                     <h3 className="section-title">¿Cómo puedo ayudarte?</h3>
-                    <p className="section-subtitle">Terapias especializadas adaptadas a tus necesidades</p>
                     
                     <div className="services-grid">
                         <div className="service-card">
                             <div className="service-icon">😟</div>
                             <h4>Ansiedad y Estrés</h4>
-                            <p>Tratamiento especializado para manejar la ansiedad, ataques de pánico, estrés laboral y preocupaciones excesivas. Aprende técnicas efectivas para recuperar tu tranquilidad.</p>
-                        </div>
-
-                        <div className="service-card">
-                            <div className="service-icon">💔</div>
-                            <h4>Depresión y Estado de Ánimo</h4>
-                            <p>Acompañamiento en momentos de tristeza profunda, pérdida de interés y desmotivación. Recupera tu energía y disfruta de nuevo de la vida.</p>
+                            <p>Técnicas efectivas para recuperar tu tranquilidad y bienestar.</p>
                         </div>
 
                         <div className="service-card">
                             <div className="service-icon">💪</div>
-                            <h4>Autoestima y Crecimiento Personal</h4>
-                            <p>Fortalece tu confianza, desarrolla una imagen positiva de ti mismo/a y alcanza tu máximo potencial. Construye la versión de ti que deseas ser.</p>
+                            <h4>Autoestima</h4>
+                            <p>Fortalece tu confianza y alcanza tu máximo potencial.</p>
                         </div>
 
                         <div className="service-card">
-                            <div className="service-icon">💑</div>
-                            <h4>Terapia de Pareja</h4>
-                            <p>Mejora la comunicación, resuelve conflictos y fortalece tu relación. Un espacio seguro para reconectar con tu pareja y construir juntos.</p>
+                            <div className="service-icon">💔</div>
+                            <h4>Estado de Ánimo</h4>
+                            <p>Recupera tu energía y disfruta de nuevo de la vida.</p>
                         </div>
 
                         <div className="service-card">
                             <div className="service-icon">🧠</div>
                             <h4>Neuropsicología</h4>
-                            <p>Evaluación y rehabilitación de funciones cognitivas (memoria, atención, lenguaje). Especializado en daño cerebral, demencias y trastornos del desarrollo.</p>
-                        </div>
-
-                        <div className="service-card">
-                            <div className="service-icon">🌱</div>
-                            <h4>Duelo y Adaptación</h4>
-                            <p>Apoyo en procesos de pérdida, cambios vitales importantes y adaptación a nuevas situaciones. Atraviesa el dolor con acompañamiento profesional.</p>
+                            <p>Evaluación y rehabilitación de funciones cognitivas.</p>
                         </div>
                     </div>
 
                     <div className="services-modality">
-                        <p><strong>Modalidad:</strong> Sesiones presenciales en consulta y online (videollamada) | Duración: 50-60 minutos</p>
+                        <p>💻 Online • 🏥 Presencial • 50-60 minutos</p>
                     </div>
-                </div>
+                </section>
 
-                {/* A Quién Va Dirigida */}
-                <div className="target-audience-section">
-                    <h3 className="section-title">¿Es para ti esta terapia?</h3>
-                    <p className="section-subtitle">Trabajamos con personas en diferentes etapas y situaciones de vida</p>
-                    
-                    <div className="audience-grid">
-                        <div className="audience-card">
-                            <div className="audience-icon">👤</div>
-                            <h4>Adultos</h4>
-                            <ul>
-                                <li>Estrés laboral y burnout</li>
-                                <li>Crisis vitales y cambios</li>
-                                <li>Problemas de relación</li>
-                                <li>Ansiedad y depresión</li>
-                            </ul>
-                        </div>
-
-                        <div className="audience-card">
-                            <div className="audience-icon">👥</div>
-                            <h4>Parejas</h4>
-                            <ul>
-                                <li>Problemas de comunicación</li>
-                                <li>Infidelidades y crisis</li>
-                                <li>Decisiones importantes</li>
-                                <li>Fortalecer la relación</li>
-                            </ul>
-                        </div>
-
-                        <div className="audience-card">
-                            <div className="audience-icon">🧑‍🦳</div>
-                            <h4>Adultos Mayores</h4>
-                            <ul>
-                                <li>Problemas de memoria</li>
-                                <li>Evaluación neuropsicológica</li>
-                                <li>Adaptación al envejecimiento</li>
-                                <li>Estimulación cognitiva</li>
-                            </ul>
-                        </div>
-
-                        <div className="audience-card">
-                            <div className="audience-icon">👨‍👩‍👧</div>
-                            <h4>Familias</h4>
-                            <ul>
-                                <li>Conflictos familiares</li>
-                                <li>Apoyo en duelos</li>
-                                <li>Problemas de convivencia</li>
-                                <li>Adaptación a cambios</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Testimonios */}
-                <div className="testimonials-section">
-                    <h3 className="section-title">Lo que dicen quienes han confiado en mí</h3>
-                    
-                    <div className="testimonials-grid">
-                        <div className="testimonial-card">
-                            <div className="testimonial-stars">⭐⭐⭐⭐⭐</div>
-                            <p className="testimonial-text">
-                                "Después de meses luchando con la ansiedad, finalmente encontré el apoyo que necesitaba. 
-                                María me ayudó a entender mis emociones y a desarrollar herramientas prácticas. 
-                                Ahora me siento mucho más tranquila y capaz de enfrentar el día a día."
-                            </p>
-                            <p className="testimonial-author">- Laura M., 34 años</p>
-                        </div>
-
-                        <div className="testimonial-card">
-                            <div className="testimonial-stars">⭐⭐⭐⭐⭐</div>
-                            <p className="testimonial-text">
-                                "La terapia de pareja salvó nuestra relación. Aprendimos a comunicarnos de verdad 
-                                y a entender las necesidades del otro. El ambiente profesional y cercano nos hizo 
-                                sentir cómodos desde el primer día."
-                            </p>
-                            <p className="testimonial-author">- Carlos y Ana, terapia de pareja</p>
-                        </div>
-
-                        <div className="testimonial-card">
-                            <div className="testimonial-stars">⭐⭐⭐⭐⭐</div>
-                            <p className="testimonial-text">
-                                "Mi madre comenzó a tener problemas de memoria y no sabíamos qué hacer. 
-                                La evaluación neuropsicológica nos dio claridad y un plan de acción. 
-                                Estamos muy agradecidos por el trato tan humano y profesional."
-                            </p>
-                            <p className="testimonial-author">- Roberto P., familiar de paciente</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="home-calendar-section">
-                    <h3 className="calendar-title">Consulta Disponibilidad</h3>
-                    <Calendar />
-                </div>
+                {/* Calendar Section - Only for non-logged users */}
+                {!isLoggedIn && (
+                    <section className="home-calendar-section">
+                        <h3 className="calendar-title">Consulta Disponibilidad</h3>
+                        <Calendar />
+                    </section>
+                )}
             </div>
         </div>
     )
