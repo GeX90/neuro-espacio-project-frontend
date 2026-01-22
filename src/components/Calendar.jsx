@@ -67,7 +67,7 @@ function Calendar() {
 
     if (isLoggedIn) {
       // Si está loggeado, ir a crear cita con la fecha seleccionada
-      navigate('/crear-cita', { state: { selectedDate } });
+      navigate('/citas/create', { state: { selectedDate } });
     } else {
       // Si no está loggeado, ir a login (desde ahí pueden ir a signup)
       navigate('/login');
