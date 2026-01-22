@@ -53,7 +53,7 @@ function AboutUsPage() {
             <span>GitHub</span>
           </a>
           <a 
-            href="https://www.linkedin.com/in/jorge-jimenez-morgado-2a66a83a5/" 
+            href="https://www.linkedin.com/in/jorge-jimenez-morgado/" 
             target="_blank" 
             rel="noopener noreferrer"
             className="dev-link"
