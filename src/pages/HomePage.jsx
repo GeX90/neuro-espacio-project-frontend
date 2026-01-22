@@ -94,11 +94,6 @@ function HomePage() {
                                 <p>Vista completa de citas</p>
                             </Link>
                         </div>
-
-                        <div className="admin-calendar-preview">
-                            <h4 className="calendar-preview-title">Vista de Disponibilidad</h4>
-                            <Calendar />
-                        </div>
                     </section>
                 )}
 
@@ -169,18 +164,18 @@ function HomePage() {
                     </div>
                 </section>
 
-                {/* Calendar Section - For all users */}
-                <section className="home-calendar-section">
-                    <h3 className="calendar-title">Consulta Disponibilidad</h3>
-                    <p className="calendar-subtitle">
-                        {isLoggedIn && !isAdmin 
-                            ? "Selecciona un día disponible para reservar tu cita" 
-                            : !isLoggedIn 
-                            ? "Días disponibles en verde. Regístrate para reservar tu cita" 
-                            : "Días disponibles para los pacientes"}
-                    </p>
-                    <Calendar />
-                </section>
+                {/* Calendar Section - Only for non-admin users */}
+                {!isAdmin && (
+                    <section className="home-calendar-section">
+                        <h3 className="calendar-title">Consulta Disponibilidad</h3>
+                        <p className="calendar-subtitle">
+                            {isLoggedIn 
+                                ? "Selecciona un día disponible para reservar tu cita" 
+                                : "Días disponibles en verde. Regístrate para reservar tu cita"}
+                        </p>
+                        <Calendar />
+                    </section>
+                )}
             </div>
         </div>
     )
