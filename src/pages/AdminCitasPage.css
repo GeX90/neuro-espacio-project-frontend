@@ -1,19 +1,19 @@
 .admin-citas-container {
   min-height: calc(100vh - 140px);
   padding: 40px 20px;
-  background: linear-gradient(135deg, #f5ede1 0%, #e8dcc9 100%);
+  background: linear-gradient(135deg, #BFDAD5 0%, #A8B8A0 100%);
 }
 
 .admin-citas-container h1 {
   text-align: center;
-  color: #615338;
+  color: #00788C;
   font-size: 2.5rem;
   margin-bottom: 10px;
 }
 
 .admin-citas-container .subtitle {
   text-align: center;
-  color: #7e3805;
+  color: #3f3f3a;
   font-size: 1.2rem;
   font-weight: 500;
   margin-bottom: 40px;
@@ -21,7 +21,7 @@
 
 .admin-citas-container > p {
   text-align: center;
-  color: #615338;
+  color: #3f3f3a;
   font-size: 1.2rem;
   margin-top: 40px;
 }
@@ -40,16 +40,16 @@
 }
 
 .user-info {
-  background: #f5ede1;
+  background: #F9FAF7;
   padding: 12px;
   border-radius: 8px;
   margin-bottom: 16px;
-  border-left: 4px solid #615338;
+  border-left: 4px solid #00788C;
 }
 
 .user-info p {
   margin: 5px 0;
-  color: #333;
+  color: #3f3f3a;
 }
 
 .citas-list {
@@ -73,10 +73,10 @@
 }
 
 .cita-card h3 {
-  color: #615338;
+  color: #00788C;
   font-size: 1.5rem;
   margin-bottom: 16px;
-  border-bottom: 2px solid #e0d5c7;
+  border-bottom: 2px solid #BFDAD5;
   padding-bottom: 12px;
 }
 
@@ -85,7 +85,7 @@
 }
 
 .cita-info p {
-  color: #333;
+  color: #3f3f3a;
   font-size: 1rem;
   margin: 10px 0;
   display: flex;
@@ -94,7 +94,7 @@
 }
 
 .cita-info strong {
-  color: #615338;
+  color: #00788C;
   font-weight: 600;
   min-width: 100px;
 }
@@ -104,7 +104,7 @@
 }
 
 .edit-form h3 {
-  color: #7e3805;
+  color: #00788C;
   margin-bottom: 20px;
 }
 
@@ -114,7 +114,7 @@
 
 .form-group label {
   display: block;
-  color: #615338;
+  color: #3f3f3a;
   font-weight: 600;
   font-size: 1rem;
   margin-bottom: 8px;
@@ -126,7 +126,7 @@
   max-width: 100%;
   padding: 12px 16px;
   margin: 0;
-  border: 2px solid #e0d5c7;
+  border: 2px solid #BFDAD5;
   border-radius: 8px;
   font-size: 1rem;
   font-family: inherit;
@@ -142,8 +142,8 @@
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #615338;
-  box-shadow: 0 0 0 3px rgba(97, 83, 56, 0.1);
+  border-color: #00788C;
+  box-shadow: 0 0 0 3px rgba(0, 120, 140, 0.15);
 }
 
 .button-group {
@@ -170,13 +170,14 @@
 }
 
 .btn-save {
-  background: linear-gradient(135deg, #615338 0%, #7e3805 100%);
+  background: #00788C;
   color: white;
 }
 
 .btn-save:hover:not(:disabled) {
+  background: #005f6f;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(97, 83, 56, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 120, 140, 0.3);
 }
 
 .btn-cancel {

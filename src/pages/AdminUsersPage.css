@@ -1,19 +1,19 @@
 .admin-users-container {
   min-height: calc(100vh - 140px);
   padding: 40px 20px;
-  background: linear-gradient(135deg, #f5ede1 0%, #e8dcc9 100%);
+  background: linear-gradient(135deg, #BFDAD5 0%, #A8B8A0 100%);
 }
 
 .admin-users-container h1 {
   text-align: center;
-  color: #615338;
+  color: #00788C;
   font-size: 2.5rem;
   margin-bottom: 10px;
 }
 
 .admin-users-container .subtitle {
   text-align: center;
-  color: #7e3805;
+  color: #3f3f3a;
   font-size: 1.2rem;
   font-weight: 500;
   margin-bottom: 40px;
@@ -35,7 +35,7 @@
 }
 
 .users-table thead {
-  background: linear-gradient(135deg, #615338 0%, #7e3805 100%);
+  background: #00788C;
   color: white;
 }
 
@@ -47,17 +47,17 @@
 }
 
 .users-table tbody tr {
-  border-bottom: 1px solid #e0d5c7;
+  border-bottom: 1px solid #BFDAD5;
   transition: background 0.3s ease;
 }
 
 .users-table tbody tr:hover {
-  background: #f5ede1;
+  background: #F9FAF7;
 }
 
 .users-table td {
   padding: 15px;
-  color: #333;
+  color: #3f3f3a;
   font-size: 0.95rem;
 }
 
@@ -70,13 +70,13 @@
 }
 
 .role-badge.admin {
-  background: #ffd700;
-  color: #615338;
+  background: #00788C;
+  color: white;
 }
 
 .role-badge.user {
-  background: #e0d5c7;
-  color: #615338;
+  background: #A8B8A0;
+  color: white;
 }
 
 .btn-delete-user {
