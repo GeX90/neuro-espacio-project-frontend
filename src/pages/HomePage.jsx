@@ -88,7 +88,7 @@ function HomePage() {
                                 <p>Lista de pacientes registrados</p>
                             </Link>
 
-                            <Link to="/citas" className="admin-card">
+                            <Link to="/calendar" className="admin-card">
                                 <span className="admin-icon">📊</span>
                                 <h4>Calendario</h4>
                                 <p>Vista completa de citas</p>

@@ -13,6 +13,7 @@ import AboutUsPage from "./pages/AboutUsPage";
 import CitaDetailsPage from "./pages/CitaDetailsPage";
 import AdminUsersPage from "./pages/AdminUsersPage";
 import AdminCitasPage from "./pages/AdminCitasPage";
+import CalendarPage from "./pages/CalendarPage";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         {/* Rutas de Admin */}
         <Route path="/admin/users" element={<IsPrivate> <AdminUsersPage /> </IsPrivate>} />
         <Route path="/admin/citas" element={<IsPrivate> <AdminCitasPage /> </IsPrivate>} />
+        <Route path="/calendar" element={<IsPrivate> <CalendarPage /> </IsPrivate>} />
       </Routes>
 
       <Footer />
