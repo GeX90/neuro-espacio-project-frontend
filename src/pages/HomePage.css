@@ -509,20 +509,28 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.25rem;
+    gap: 1rem;
     width: 100%;
     background: white;
-    padding: 1.5rem;
+    padding: 2rem 1.5rem;
     border-radius: 24px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
 .calendar-title {
-    color: #4a6a82;
-    font-size: 1.5rem;
+    color: #00788C;
+    font-size: 1.75rem;
     font-weight: 700;
     margin: 0;
     text-align: center;
+}
+
+.calendar-subtitle {
+    color: #5B6B5E;
+    font-size: 1rem;
+    margin: 0;
+    text-align: center;
+    font-weight: 500;
 }
 
 /* ==========================================

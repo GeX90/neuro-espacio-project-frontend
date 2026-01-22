@@ -240,13 +240,18 @@ function HomePage() {
                     </div>
                 </section>
 
-                {/* Calendar Section - Only for non-logged users */}
-                {!isLoggedIn && (
-                    <section className="home-calendar-section">
-                        <h3 className="calendar-title">Consulta Disponibilidad</h3>
-                        <Calendar />
-                    </section>
-                )}
+                {/* Calendar Section - For all users */}
+                <section className="home-calendar-section">
+                    <h3 className="calendar-title">Consulta Disponibilidad</h3>
+                    <p className="calendar-subtitle">
+                        {isLoggedIn && !isAdmin 
+                            ? "Selecciona un día disponible para reservar tu cita" 
+                            : !isLoggedIn 
+                            ? "Días disponibles en verde. Regístrate para reservar tu cita" 
+                            : "Días disponibles para los pacientes"}
+                    </p>
+                    <Calendar />
+                </section>
             </div>
         </div>
     )
