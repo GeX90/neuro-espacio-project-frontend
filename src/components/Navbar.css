@@ -65,12 +65,10 @@ nav {
     flex-shrink: 0;
 }
 
-nav button,
-nav a {
-    text-decoration: none;
-}
-
+.nav-link,
+.nav-btn,
 nav button {
+    text-decoration: none;
     background: #00788C;
     color: white;
     padding: 0.625rem 1.25rem;
@@ -82,14 +80,20 @@ nav button {
     white-space: nowrap;
     transition: all 0.3s ease;
     box-shadow: 0 2px 8px rgba(0, 120, 140, 0.25);
+    display: inline-block;
+    text-align: center;
 }
 
+.nav-link:hover,
+.nav-btn:hover,
 nav button:hover {
     background: #005f6f;
     box-shadow: 0 4px 12px rgba(0, 120, 140, 0.35);
     transform: translateY(-2px);
 }
 
+.nav-link:active,
+.nav-btn:active,
 nav button:active {
     transform: translateY(0);
 }
@@ -178,11 +182,7 @@ nav span {
         transform: translateX(0);
     }
 
-    .navbar-navigation a {
-        width: 100%;
-    }
-
-    .navbar-navigation button {
+    .navbar-navigation .nav-link {
         width: 100%;
     }
 
@@ -191,6 +191,8 @@ nav span {
         order: 3;
     }
 
+    .nav-link,
+    .nav-btn,
     nav button {
         padding: 0.5rem 0.875rem;
         font-size: 0.8rem;
@@ -227,6 +229,8 @@ nav span {
         gap: 0.25rem;
     }
 
+    .nav-link,
+    .nav-btn,
     nav button {
         padding: 0.4rem 0.7rem;
         font-size: 0.75rem;
@@ -259,6 +263,8 @@ nav span {
         gap: 0.75rem;
     }
 
+    .nav-link,
+    .nav-btn,
     nav button {
         padding: 0.625rem 1.25rem;
         font-size: 0.9rem;

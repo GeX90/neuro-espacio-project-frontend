@@ -36,8 +36,8 @@ function Navbar() {
 
       <div className={`navbar-navigation ${menuOpen ? 'mobile-open' : ''}`}>
         {!isLoggedIn && (
-          <Link to="/signup" onClick={closeMenu}>
-            <button>Reservar Cita</button>
+          <Link to="/signup" onClick={closeMenu} className="nav-link">
+            Reservar Cita
           </Link>
         )}
 
@@ -46,35 +46,35 @@ function Navbar() {
             {isAdmin ? (
               // Opciones para Admin
               <>
-                <Link to="/admin/citas" onClick={closeMenu}>
-                  <button>Gestionar Citas</button>
+                <Link to="/admin/citas" onClick={closeMenu} className="nav-link">
+                  Gestionar Citas
                 </Link>
 
-                <Link to="/admin/users" onClick={closeMenu}>
-                  <button>Pacientes</button>
+                <Link to="/admin/users" onClick={closeMenu} className="nav-link">
+                  Pacientes
                 </Link>
 
-                <Link to="/calendar" onClick={closeMenu}>
-                  <button>Calendario</button>
+                <Link to="/calendar" onClick={closeMenu} className="nav-link">
+                  Calendario
                 </Link>
               </>
             ) : (
               // Opciones para Usuario normal
               <>
-                <Link to="/citas" onClick={closeMenu}>
-                  <button>Mis Citas</button>
+                <Link to="/citas" onClick={closeMenu} className="nav-link">
+                  Mis Citas
                 </Link>
 
-                <Link to="/citas/create" onClick={closeMenu}>
-                  <button>Nueva Cita</button>
+                <Link to="/citas/create" onClick={closeMenu} className="nav-link">
+                  Nueva Cita
                 </Link>
               </>
             )}
           </>
         )}
 
-        <Link to="/about" onClick={closeMenu}>
-          <button>Sobre Nosotros</button>
+        <Link to="/about" onClick={closeMenu} className="nav-link">
+          Sobre Nosotros
         </Link>
       </div>
 
@@ -88,11 +88,11 @@ function Navbar() {
 
         {!isLoggedIn && (
           <>
-            <Link to="/login" onClick={closeMenu}>
-              <button>Iniciar Sesión</button>
+            <Link to="/login" onClick={closeMenu} className="nav-btn">
+              Iniciar Sesión
             </Link>
-            <Link to="/signup" onClick={closeMenu}>
-              <button>Crear Cuenta</button>
+            <Link to="/signup" onClick={closeMenu} className="nav-btn">
+              Crear Cuenta
             </Link>
           </>
         )}
