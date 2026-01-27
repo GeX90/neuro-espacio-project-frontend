@@ -1,19 +1,25 @@
+/* ==========================================
+   Modern CreateCitasPage - BetterHelp Style
+   ========================================== */
+
 .create-citas-container {
   min-height: calc(100vh - 140px);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 40px 20px;
-  background: linear-gradient(135deg, #BFDAD5 0%, #A8B8A0 100%);
+  padding: 3rem 1.5rem;
+  background: linear-gradient(135deg, rgba(191, 218, 213, 0.2) 0%, rgba(168, 184, 160, 0.15) 100%);
 }
 
 .create-citas-container h1 {
   text-align: center;
   color: #00788C;
-  font-size: 2.5rem;
-  margin-bottom: 30px;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  font-size: 2.25rem;
+  margin-bottom: 2rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.5px;
 }
 
 .create-citas-container .error {
@@ -31,12 +37,12 @@
 
 .create-citas-container form {
   width: 100%;
-  max-width: 500px;
+  max-width: 540px;
   background: white;
-  border: none;
-  border-radius: 12px;
-  padding: 40px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(191, 218, 213, 0.3);
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
 }
 
 .create-citas-container .form-group {
@@ -49,27 +55,28 @@
   display: block;
   color: #3f3f3a;
   font-weight: 600;
-  font-size: 1rem;
-  margin-bottom: 8px;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
   width: 100%;
+  font-family: 'Poppins', sans-serif;
 }
 
 .create-citas-container input,
 .create-citas-container textarea {
   width: 100%;
   max-width: 100%;
-  padding: 12px 16px;
+  padding: 0.875rem 1rem;
   margin: 0;
-  border: 2px solid #BFDAD5;
-  border-radius: 8px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
   font-size: 1rem;
-  font-family: inherit;
+  font-family: 'Roboto', sans-serif;
   transition: all 0.3s ease;
   box-sizing: border-box;
 }
 
 .create-citas-container textarea {
-  min-height: 100px;
+  min-height: 120px;
   resize: vertical;
 }
 
@@ -77,32 +84,33 @@
 .create-citas-container textarea:focus {
   outline: none;
   border-color: #00788C;
-  box-shadow: 0 0 0 3px rgba(0, 120, 140, 0.15);
+  box-shadow: 0 0 0 4px rgba(0, 120, 140, 0.1);
 }
 
 .create-citas-container button[type="submit"] {
   width: 100%;
-  padding: 14px 20px;
-  margin-top: 24px;
+  padding: 1rem 1.5rem;
+  margin-top: 1.75rem;
   background: #00788C;
   color: white;
   border: none;
-  border-radius: 8px;
-  font-size: 1.1rem;
+  border-radius: 12px;
+  font-size: 1.05rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 120, 140, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 3px 10px rgba(0, 120, 140, 0.25);
+  font-family: 'Poppins', sans-serif;
 }
 
 .create-citas-container button[type="submit"]:hover:not(:disabled) {
   background: #005f6f;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 120, 140, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 120, 140, 0.35);
 }
 
 .create-citas-container button[type="submit"]:active {
-  transform: translateY(0);
+  transform: translateY(-1px);
 }
 
 .create-citas-container button[type="submit"]:disabled {

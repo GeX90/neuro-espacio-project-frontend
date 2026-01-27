@@ -1,11 +1,12 @@
 /* ==========================================
-   CalendarPage - Admin Calendar View
+   Modern CalendarPage - BetterHelp Style
+   Clean and Professional
    ========================================== */
 
 .CalendarPage {
   min-height: calc(100vh - 80px);
-  padding: 6rem 1rem 2rem;
-  background: linear-gradient(135deg, #BFDAD5 0%, #A8B8A0 100%);
+  padding: 6rem 1.5rem 2rem;
+  background: linear-gradient(135deg, rgba(191, 218, 213, 0.15) 0%, rgba(168, 184, 160, 0.1) 100%);
 }
 
 .calendar-page-container {
@@ -24,29 +25,32 @@
 .calendar-page-header > div h1 {
   text-align: center;
   color: #00788C;
-  font-size: 2.5rem;
+  font-size: 2.25rem;
   margin-bottom: 0.5rem;
   font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: -0.5px;
 }
 
 .btn-create-cita {
   background: #636E40;
   color: white;
   padding: 0.875rem 1.75rem;
-  border-radius: 50px;
+  border-radius: 12px;
   text-decoration: none;
   font-weight: 600;
   font-size: 1rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(99, 110, 64, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 3px 10px rgba(99, 110, 64, 0.25);
   display: inline-block;
   white-space: nowrap;
+  font-family: 'Poppins', sans-serif;
 }
 
 .btn-create-cita:hover {
   background: #4f5833;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(99, 110, 64, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(99, 110, 64, 0.35);
 }
 
 .calendar-subtitle {
@@ -57,16 +61,17 @@
   margin-bottom: 2rem;
 }
 
-/* Filtros */
+/* Filtros - Modern Style */
 .calendar-filters {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   background: white;
-  padding: 1.5rem;
+  padding: 1.75rem;
   border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
   margin-bottom: 1.5rem;
+  border: 1px solid rgba(191, 218, 213, 0.3);
 }
 
 .filter-group {
@@ -77,25 +82,27 @@
 
 .filter-group label {
   font-weight: 600;
-  color: #636E40;
+  color: #3f3f3a;
   font-size: 0.95rem;
+  font-family: 'Poppins', sans-serif;
 }
 
 .filter-select,
 .filter-input {
   padding: 0.75rem 1rem;
-  border: 2px solid #BFDAD5;
-  border-radius: 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
   font-size: 1rem;
   background: white;
   transition: all 0.3s ease;
+  font-family: 'Roboto', sans-serif;
 }
 
 .filter-select:focus,
 .filter-input:focus {
   outline: none;
   border-color: #00788C;
-  box-shadow: 0 0 0 3px rgba(0, 120, 140, 0.1);
+  box-shadow: 0 0 0 4px rgba(0, 120, 140, 0.1);
 }
 
 .view-toggle {

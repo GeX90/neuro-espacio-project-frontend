@@ -1,5 +1,6 @@
 /* ==========================================
-   LoginPage - Mobile-First Wellness Design
+   Modern LoginPage - BetterHelp Style
+   Clean, Professional, Calming
    ========================================== */
 
 .LoginPage {
@@ -11,28 +12,30 @@
   justify-content: center;
   padding: 2rem 1rem;
   padding-top: calc(80px + 3rem);
-  background: linear-gradient(135deg, #BFDAD5 0%, #A8B8A0 100%);
+  background: linear-gradient(135deg, rgba(191, 218, 213, 0.2) 0%, rgba(168, 184, 160, 0.15) 100%);
   position: relative;
 }
 
 .LoginPage h1 {
   color: #00788C;
-  font-size: 2rem;
+  font-size: 2.25rem;
   text-align: center;
   margin-bottom: 1.5rem;
   margin-top: 0;
   font-weight: 700;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: -0.5px;
 }
 
 .LoginPage form {
   width: 100%;
-  max-width: 450px;
+  max-width: 460px;
   background: white;
-  border-radius: 32px;
-  padding: 2.5rem 2rem;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  border-radius: 20px;
+  padding: 2.75rem 2.25rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
   margin-top: 0;
+  border: 1px solid rgba(191, 218, 213, 0.3);
 }
 
 .LoginPage label {
@@ -43,6 +46,7 @@
   margin-bottom: 0.5rem;
   margin-top: 1rem;
   width: 100%;
+  font-family: 'Poppins', sans-serif;
 }
 
 .LoginPage label:first-of-type {
@@ -54,42 +58,44 @@
   max-width: 100%;
   padding: 0.875rem 1rem;
   margin: 0 0 0.5rem 0;
-  border: 2px solid #BFDAD5;
-  border-radius: 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
   font-size: 1rem;
   transition: all 0.3s ease;
   box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
 }
 
 .LoginPage input:focus {
   outline: none;
   border-color: #00788C;
-  box-shadow: 0 0 0 3px rgba(0, 120, 140, 0.15);
+  box-shadow: 0 0 0 4px rgba(0, 120, 140, 0.1);
 }
 
 .LoginPage button[type="submit"] {
   width: 100%;
   padding: 1rem 1.5rem;
-  margin-top: 1.5rem;
+  margin-top: 1.75rem;
   background: #00788C;
   color: white;
   border: none;
-  border-radius: 50px;
+  border-radius: 12px;
   font-size: 1.05rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 120, 140, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 3px 10px rgba(0, 120, 140, 0.25);
+  font-family: 'Poppins', sans-serif;
 }
 
 .LoginPage button[type="submit"]:hover {
   background: #005f6f;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 120, 140, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 120, 140, 0.35);
 }
 
 .LoginPage button[type="submit"]:active {
-  transform: translateY(0);
+  transform: translateY(-1px);
 }
 
 .LoginPage .error-message {

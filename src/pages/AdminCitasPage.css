@@ -11,9 +11,11 @@
 
 .admin-citas-header h1 {
   color: #00788C;
-  font-size: 2rem;
+  font-size: 2.25rem;
   margin-bottom: 0.75rem;
   font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: -0.5px;
 }
 
 .admin-citas-header .subtitle {
@@ -61,18 +63,19 @@
   background: white;
   color: #00788C;
   border: none;
-  padding: 0.5rem 1.2rem;
-  border-radius: 8px;
+  padding: 0.625rem 1.25rem;
+  border-radius: 10px;
   cursor: pointer;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;
+  font-family: 'Poppins', sans-serif;
 }
 
 .btn-clear-filter:hover {
   background: #f0f0f0;
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 @media (max-width: 768px) {
@@ -125,16 +128,36 @@
 
 .cita-card {
   background: white;
-  border-radius: 20px;
-  padding: 1.5rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
+  border-radius: 16px;
+  padding: 1.75rem;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(191, 218, 213, 0.3);
   border-left: 4px solid #00788C;
+  position: relative;
+  overflow: hidden;
+}
+
+.cita-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #00788C 0%, #BFDAD5 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .cita-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 28px rgba(0, 120, 140, 0.15);
+  border-color: #00788C;
+}
+
+.cita-card:hover::before {
+  opacity: 1;
 }
 
 .cita-card-header {

@@ -92,17 +92,37 @@
 
 .cita-card {
   background: white;
-  border-radius: 20px;
-  padding: 1.5rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  padding: 1.75rem;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(191, 218, 213, 0.3);
   border-left: 4px solid #00788C;
+  position: relative;
+  overflow: hidden;
+}
+
+.cita-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #00788C 0%, #BFDAD5 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .cita-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 28px rgba(0, 120, 140, 0.15);
+  border-color: #00788C;
+}
+
+.cita-card:hover::before {
+  opacity: 1;
 }
 
 .cita-card-header {

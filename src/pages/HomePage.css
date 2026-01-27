@@ -25,24 +25,26 @@
 }
 
 /* ==========================================
-   Hero Section
+   Modern Hero Section - BetterHelp Style
    ========================================== */
 .home-hero {
     width: 100%;
-    background: linear-gradient(135deg, #BFDAD5 0%, #A8B8A0 100%);
-    padding: 2.5rem 1.5rem;
-    border-radius: 24px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    background: linear-gradient(135deg, rgba(191, 218, 213, 0.3) 0%, rgba(168, 184, 160, 0.2) 100%);
+    padding: 3rem 2rem;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
     text-align: center;
+    border: 1px solid rgba(191, 218, 213, 0.4);
+    backdrop-filter: blur(10px);
 }
 
 .HomePage h1 {
     color: #00788C;
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: 700;
-    margin: 0 0 1rem 0;
-    letter-spacing: 1px;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 0 0 1.25rem 0;
+    letter-spacing: -0.5px;
+    font-family: 'Poppins', sans-serif;
 }
 
 .neuro-espacio-title {
@@ -73,38 +75,42 @@
 }
 
 .btn-cta {
-    padding: 1rem 1.5rem;
+    padding: 1rem 2rem;
     font-size: 1.05rem;
     font-weight: 600;
     text-decoration: none;
-    border-radius: 50px;
-    transition: all 0.3s ease;
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: inline-block;
     text-align: center;
+    font-family: 'Poppins', sans-serif;
 }
 
 .btn-cta.primary {
     background: #00788C;
     color: white;
-    box-shadow: 0 4px 12px rgba(0, 120, 140, 0.3);
+    box-shadow: 0 3px 10px rgba(0, 120, 140, 0.25);
+    border: none;
 }
 
 .btn-cta.primary:hover {
     background: #005f6f;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(0, 120, 140, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 120, 140, 0.35);
 }
 
 .btn-cta.secondary {
-    background: transparent;
-    color: #3f3f3a;
-    border: 2px solid #3f3f3a;
+    background: white;
+    color: #00788C;
+    border: 2px solid #00788C;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .btn-cta.secondary:hover {
-    background: #3f3f3a;
+    background: #00788C;
     color: white;
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 120, 140, 0.25);
 }
 
 /* ==========================================
@@ -127,29 +133,33 @@
 
 .quick-action-card {
     background: white;
-    border-radius: 20px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease;
+    border-radius: 16px;
+    padding: 1.75rem;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     text-decoration: none;
     color: inherit;
     display: block;
+    border: 1px solid rgba(191, 218, 213, 0.3);
 }
 
 .quick-action-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 28px rgba(0, 120, 140, 0.12);
+    border-color: #00788C;
 }
 
 .quick-action-card.next-appointment {
-    background: #BFDAD5;
+    background: linear-gradient(135deg, rgba(191, 218, 213, 0.6) 0%, rgba(168, 184, 160, 0.5) 100%);
     color: #3f3f3a;
+    border: 1px solid rgba(191, 218, 213, 0.5);
 }
 
 .quick-action-card.empty-state {
     text-align: center;
-    padding: 2rem 1.5rem;
-    border: 2px dashed #A8B8A0;
+    padding: 2.5rem 1.75rem;
+    border: 2px dashed rgba(168, 184, 160, 0.4);
+    background: rgba(249, 250, 247, 0.5);
 }
 
 .card-header {
@@ -167,6 +177,8 @@
     font-size: 1.25rem;
     font-weight: 600;
     margin: 0;
+    font-family: 'Poppins', sans-serif;
+    color: #00788C;
 }
 
 .appointment-details {
