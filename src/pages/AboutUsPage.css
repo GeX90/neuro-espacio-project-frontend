@@ -34,7 +34,7 @@
     font-size: 1.5rem;
     margin-top: 2rem;
     margin-bottom: 1rem;
-    border-bottom: 3px solid #A8B8A0;
+    border-bottom: 3px solid var(--color-bg-section);
     padding-bottom: 0.75rem;
     font-weight: 700;
 }

@@ -78,7 +78,7 @@
   font-weight: 500;
   cursor: default;
   transition: all 0.3s ease;
-  background: #f5f7fa;
+  background: var(--color-bg-main);
   color: #9aa5b1;
 }
 
@@ -131,7 +131,7 @@
 }
 
 .legend-color.unavailable {
-  background: #f5f7fa;
+  background: var(--color-bg-main);
   border: 2px solid #d0dce6;
 }
 

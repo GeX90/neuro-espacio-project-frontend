@@ -25,7 +25,7 @@
 }
 
 .filter-info {
-  background: linear-gradient(135deg, #636E40 0%, #006073 100%);
+  background: linear-gradient(135deg, var(--color-title) 0%, #006073 100%);
   color: white;
   padding: 1rem 1.5rem;
   border-radius: 12px;
@@ -64,7 +64,7 @@
   color: #3f3f3a;
   border: none;
   padding: 0.625rem 1.25rem;
-  border-radius: 10px;
+  border-radius: 12px;
   cursor: pointer;
   font-weight: 600;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -145,7 +145,7 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #4a5632 0%, #A8B8A0 100%);
+  background: linear-gradient(90deg, var(--color-title) 0%, var(--color-bg-section) 100%);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -166,13 +166,13 @@
   gap: 1rem;
   margin-bottom: 1rem;
   padding-bottom: 1rem;
-  border-bottom: 2px solid #A8B8A0;
+  border-bottom: 2px solid var(--color-bg-section);
 }
 
 .cita-card-icon {
   width: 56px;
   height: 56px;
-  background: #A8B8A0;
+  background: var(--color-bg-section);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -265,7 +265,7 @@
   display: flex;
   gap: 0.5rem;
   padding-top: 1rem;
-  border-top: 2px solid #A8B8A0;
+  border-top: 2px solid var(--color-bg-section);
 }
 
 /* Edit Form Styles */
@@ -284,7 +284,7 @@
   padding: 0.875rem;
   border-radius: 8px;
   margin-bottom: 1rem;
-  border-left: 3px solid #636E40;
+  border-left: 3px solid var(--color-title);
 }
 
 .user-info-edit p {
@@ -310,7 +310,7 @@
 .form-group textarea {
   width: 100%;
   padding: 0.625rem;
-  border: 2px solid #A8B8A0;
+  border: 2px solid var(--color-bg-section);
   border-radius: 8px;
   font-size: 1rem;
   transition: all 0.3s ease;

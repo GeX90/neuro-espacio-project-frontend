@@ -229,7 +229,7 @@
 }
 
 .btn-action.primary-action:hover {
-    background: #f5f7fa;
+    background: var(--color-bg-main);
     transform: translateY(-2px);
 }
 
@@ -314,19 +314,19 @@
 }
 
 .stat-card.today {
-    border-left: 4px solid #636E40;
+    border-left: 4px solid var(--color-title);
 }
 
 .stat-card.week {
-    border-left: 4px solid #A8B8A0;
+    border-left: 4px solid var(--color-bg-section);
 }
 
 .stat-card.month {
-    border-left: 4px solid #636E40;
+    border-left: 4px solid var(--color-title);
 }
 
 .stat-card.patients {
-    border-left: 4px solid #A8B8A0;
+    border-left: 4px solid var(--color-bg-section);
 }
 
 .stat-icon {
@@ -421,23 +421,23 @@
 }
 
 .admin-card {
-    background: linear-gradient(135deg, #4a5632 0%, #3d4429 100%);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-title) 100%);
     color: white;
     border-radius: 20px;
     padding: 1.5rem;
-    box-shadow: 0 4px 16px rgba(74, 86, 50, 0.2);
+    box-shadow: 0 4px 16px rgba(15, 124, 140, 0.2);
     transition: all 0.3s ease;
     text-decoration: none;
     display: block;
 }
 
 .admin-card.primary {
-    background: linear-gradient(135deg, #4a5632 0%, #3d4429 100%);
+    background: linear-gradient(135deg, var(--color-title) 0%, var(--color-primary) 100%);
 }
 
 .admin-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(74, 86, 50, 0.3);
+    box-shadow: 0 8px 24px rgba(15, 124, 140, 0.3);
 }
 
 .admin-icon {
@@ -541,7 +541,7 @@
 }
 
 .specialty-tag {
-    background: linear-gradient(135deg, var(--color-primary) 0%, #6b8ca8 100%);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary) 100%);
     color: white;
     padding: 0.5rem 1rem;
     border-radius: 50px;
