@@ -110,20 +110,30 @@ nav span {
     display: none;
     flex-direction: column;
     justify-content: space-around;
-    width: 32px;
-    height: 32px;
-    background: transparent;
-    border: none;
+    width: 40px;
+    height: 40px;
+    background: #BFDAD5;
+    border: 2px solid #00788C;
+    border-radius: 50%;
     cursor: pointer;
-    padding: 0;
+    padding: 8px;
     z-index: 10;
     margin: 0;
     box-shadow: none;
+    transition: all 0.3s ease;
+}
+
+.navbar-burger:hover {
+    background: #00788C;
+}
+
+.navbar-burger:hover .burger-line {
+    background: white;
 }
 
 .burger-line {
     width: 100%;
-    height: 3px;
+    height: 2.5px;
     background: #00788C;
     border-radius: 10px;
     transition: all 0.3s ease;
@@ -131,7 +141,7 @@ nav span {
 }
 
 .burger-line.open:nth-child(1) {
-    transform: translateY(10px) rotate(45deg);
+    transform: translateY(7.5px) rotate(45deg);
 }
 
 .burger-line.open:nth-child(2) {
@@ -139,7 +149,7 @@ nav span {
 }
 
 .burger-line.open:nth-child(3) {
-    transform: translateY(-10px) rotate(-45deg);
+    transform: translateY(-7.5px) rotate(-45deg);
 }
 
 /* Mobile Styles */
