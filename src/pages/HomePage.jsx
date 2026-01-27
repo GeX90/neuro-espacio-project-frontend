@@ -74,34 +74,36 @@ function HomePage() {
     return (
         <div className="HomePage">
             <div className="home-content">
-                {/* Hero Section */}
-                <header className="home-hero">
-                    <h1 className="neuro-espacio-title">NEURO ESPACIO</h1>
-                    <h2 className="home-main-message">Psicología para tu Bienestar</h2>
-                    <p className="home-subtitle">Acompañamiento profesional y cercano</p>
-                    
-                    <div className="home-cta-buttons">
-                        {!isLoggedIn ? (
-                            <>
-                                <Link to="/signup" className="btn-cta primary">
-                                    Reservar Cita
-                                </Link>
-                                <Link to="/about" className="btn-cta secondary">
-                                    Conoce más
-                                </Link>
-                            </>
-                        ) : (
-                            <>
-                                <Link to="/citas/create" className="btn-cta primary">
-                                    Reservar Cita
-                                </Link>
-                                <Link to="/citas" className="btn-cta secondary">
-                                    Mis Citas
-                                </Link>
-                            </>
-                        )}
-                    </div>
-                </header>
+                {/* Hero Section - Solo para usuarios no admin */}
+                {!isAdmin && (
+                    <header className="home-hero">
+                        <h1 className="neuro-espacio-title">NEURO ESPACIO</h1>
+                        <h2 className="home-main-message">Psicología para tu Bienestar</h2>
+                        <p className="home-subtitle">Acompañamiento profesional y cercano</p>
+                        
+                        <div className="home-cta-buttons">
+                            {!isLoggedIn ? (
+                                <>
+                                    <Link to="/signup" className="btn-cta primary">
+                                        Reservar Cita
+                                    </Link>
+                                    <Link to="/about" className="btn-cta secondary">
+                                        Conoce más
+                                    </Link>
+                                </>
+                            ) : (
+                                <>
+                                    <Link to="/citas/create" className="btn-cta primary">
+                                        Reservar Cita
+                                    </Link>
+                                    <Link to="/citas" className="btn-cta secondary">
+                                        Mis Citas
+                                    </Link>
+                                </>
+                            )}
+                        </div>
+                    </header>
+                )}
 
                 {/* Admin Dashboard - Only for admin users */}
                 {isLoggedIn && isAdmin && (

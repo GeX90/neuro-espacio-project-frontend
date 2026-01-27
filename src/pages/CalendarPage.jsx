@@ -15,6 +15,8 @@ function CalendarPage() {
   const [viewMode, setViewMode] = useState('month'); // 'week' or 'month'
   const [filterPaciente, setFilterPaciente] = useState('');
   const [filterMotivo, setFilterMotivo] = useState('');
+  const [tempFilterPaciente, setTempFilterPaciente] = useState('');
+  const [tempFilterMotivo, setTempFilterMotivo] = useState('');
   const [pacientes, setPacientes] = useState([]);
   const { isLoggedIn, user, isAdmin } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -48,7 +50,7 @@ function CalendarPage() {
       });
   }, [isLoggedIn, isAdmin, navigate]);
 
-  // Aplicar filtros
+  // Aplicar filtros cuando cambian los filtros activos
   useEffect(() => {
     let filtered = [...allCitas];
 
@@ -66,6 +68,18 @@ function CalendarPage() {
 
     setCitasData(filtered);
   }, [filterPaciente, filterMotivo, allCitas]);
+
+  const handleSearch = () => {
+    setFilterPaciente(tempFilterPaciente);
+    setFilterMotivo(tempFilterMotivo);
+  };
+
+  const handleClearFilters = () => {
+    setTempFilterPaciente('');
+    setTempFilterMotivo('');
+    setFilterPaciente('');
+    setFilterMotivo('');
+  };
 
   const getDaysInMonth = (date) => {
     const year = date.getFullYear();
@@ -216,8 +230,8 @@ function CalendarPage() {
             <label htmlFor="filter-paciente">Paciente:</label>
             <select 
               id="filter-paciente"
-              value={filterPaciente} 
-              onChange={(e) => setFilterPaciente(e.target.value)}
+              value={tempFilterPaciente} 
+              onChange={(e) => setTempFilterPaciente(e.target.value)}
               className="filter-select"
             >
               <option value="">Todos los pacientes</option>
@@ -232,10 +246,11 @@ function CalendarPage() {
             <input 
               id="filter-motivo"
               type="text"
-              value={filterMotivo}
-              onChange={(e) => setFilterMotivo(e.target.value)}
+              value={tempFilterMotivo}
+              onChange={(e) => setTempFilterMotivo(e.target.value)}
               placeholder="Ej: Ansiedad, Terapia..."
               className="filter-input"
+              onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
             />
           </div>
 
@@ -255,6 +270,15 @@ function CalendarPage() {
                 Mensual
               </button>
             </div>
+          </div>
+
+          <div className="filter-actions">
+            <button onClick={handleSearch} className="btn-search">
+              🔍 Buscar
+            </button>
+            <button onClick={handleClearFilters} className="btn-clear">
+              ✖️ Limpiar
+            </button>
           </div>
         </div>
 

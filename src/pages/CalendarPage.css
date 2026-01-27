@@ -129,6 +129,48 @@
   background: rgba(0, 120, 140, 0.1);
 }
 
+.filter-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-end;
+}
+
+.btn-search,
+.btn-clear {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.btn-search {
+  background: #00788C;
+  color: white;
+  box-shadow: 0 2px 8px rgba(0, 120, 140, 0.3);
+}
+
+.btn-search:hover {
+  background: #005f6f;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 120, 140, 0.4);
+}
+
+.btn-clear {
+  background: #F9FAF7;
+  color: #636E40;
+  border: 2px solid #BFDAD5;
+}
+
+.btn-clear:hover {
+  background: #BFDAD5;
+  border-color: #A8B8A0;
+  transform: translateY(-2px);
+}
+
 /* Legend */
 .calendar-legend {
   display: flex;
@@ -506,10 +548,16 @@
   .calendar-filters {
     flex-direction: row;
     align-items: flex-end;
+    flex-wrap: wrap;
   }
 
   .filter-group {
     flex: 1;
+    min-width: 200px;
+  }
+
+  .filter-actions {
+    flex-shrink: 0;
   }
 }
 
