@@ -264,11 +264,141 @@
 /* ==========================================
    Admin Quick Actions
    ========================================== */
+.admin-dashboard {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
 .admin-quick-actions {
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+}
+
+/* Estadísticas Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+.stat-card {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.stat-card.today {
+    border-left: 4px solid #00788C;
+}
+
+.stat-card.week {
+    border-left: 4px solid #636E40;
+}
+
+.stat-card.month {
+    border-left: 4px solid #BFDAD5;
+}
+
+.stat-card.patients {
+    border-left: 4px solid #A8B8A0;
+}
+
+.stat-icon {
+    font-size: 2.5rem;
+    line-height: 1;
+}
+
+.stat-content {
+    flex: 1;
+}
+
+.stat-content h4 {
+    font-size: 0.95rem;
+    color: #636E40;
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #00788C;
+    margin: 0;
+    line-height: 1;
+}
+
+/* Próxima Cita Card */
+.next-appointment-card {
+    background: linear-gradient(135deg, #BFDAD5 0%, #A8B8A0 100%);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.next-appointment-card h4 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #636E40;
+    margin: 0 0 1rem 0;
+}
+
+.appointment-details {
+    background: white;
+    border-radius: 12px;
+    padding: 1.25rem;
+}
+
+.appointment-patient {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #00788C;
+    margin: 0 0 0.5rem 0;
+}
+
+.appointment-date {
+    font-size: 1rem;
+    color: #636E40;
+    margin: 0 0 0.5rem 0;
+    text-transform: capitalize;
+}
+
+.appointment-motivo {
+    font-size: 0.95rem;
+    color: #5B6B5E;
+    margin: 0 0 1rem 0;
+}
+
+.btn-view-all {
+    display: inline-block;
+    background: #00788C;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.btn-view-all:hover {
+    background: #005f6f;
+    transform: translateY(-2px);
 }
 
 .admin-grid {
@@ -278,19 +408,23 @@
 }
 
 .admin-card {
-    background: linear-gradient(135deg, #5a7a92 0%, #4a6a82 100%);
+    background: linear-gradient(135deg, #00788C 0%, #005f6f 100%);
     color: white;
     border-radius: 20px;
     padding: 1.5rem;
-    box-shadow: 0 4px 16px rgba(90, 122, 146, 0.2);
+    box-shadow: 0 4px 16px rgba(0, 120, 140, 0.2);
     transition: all 0.3s ease;
     text-decoration: none;
     display: block;
 }
 
+.admin-card.primary {
+    background: linear-gradient(135deg, #636E40 0%, #4f5833 100%);
+}
+
 .admin-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(90, 122, 146, 0.3);
+    box-shadow: 0 8px 24px rgba(0, 120, 140, 0.3);
 }
 
 .admin-icon {
@@ -667,6 +801,21 @@
 
     .admin-card {
         padding: 2rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+    }
+
+    .stat-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .admin-grid {
+        grid-template-columns: repeat(3, 1fr);
     }
 
     .professional-section {
