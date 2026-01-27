@@ -35,7 +35,7 @@
 }
 
 .users-table thead {
-  background: #4a5632;
+  background: var(--color-primary);
   color: white;
 }
 
@@ -52,7 +52,7 @@
 }
 
 .users-table tbody tr:hover {
-  background: #F9FAF7;
+  background: var(--color-bg-main);
 }
 
 .users-table td {
@@ -70,7 +70,7 @@
 }
 
 .role-badge.admin {
-  background: #4a5632;
+  background: var(--color-primary);
   color: white;
 }
 
@@ -136,6 +136,9 @@
     padding: 8px 5px;
   }
 }
+
+
+
 
 
 

@@ -64,7 +64,7 @@
 }
 
 .AboutUsPage li:hover {
-    background: #F9FAF7;
+    background: var(--color-bg-main);
 }
 
 .AboutUsPage li:before {
@@ -86,7 +86,7 @@
 .dev-link {
     display: inline-block;
     padding: 0.875rem 1.75rem;
-    background: #4a5632;
+    background: var(--color-primary);
     color: white;
     text-decoration: none;
     border-radius: 50px;
@@ -96,7 +96,7 @@
 }
 
 .dev-link:hover {
-    background: #3d4429;
+    background: var(--color-primary-hover);
     transform: translateY(-2px);
     box-shadow: 0 6px 16px rgba(74, 86, 50, 0.4);
 }
@@ -161,6 +161,9 @@
         font-size: 1.1rem;
     }
 }
+
+
+
 
 
 

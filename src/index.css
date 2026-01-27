@@ -1,10 +1,37 @@
 /* ==========================================
-   Global Styles - BetterHelp-Inspired Design
+   Global Styles - Mental Health & Wellness
    Modern, Clean, and Professional
    ========================================== */
 
 /* Import Modern Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap');
+
+/* ========== CSS Variables - Design System ========== */
+:root {
+  /* Background Colors */
+  --color-bg-main: #FAFBF9;
+  --color-bg-section: #C7D9CF;
+  
+  /* Primary Colors */
+  --color-primary: #0F7C8C;
+  --color-primary-hover: #0A6F7A;
+  
+  /* Text Colors */
+  --color-title: #6B7440;
+  --color-text-main: #3f3f3a;
+  --color-text-secondary: #6F8FA6;
+  
+  /* UI Colors */
+  --color-border: #E6E6E6;
+  --color-success: #4caf50;
+  --color-warning: #ff9800;
+  --color-error: #f44336;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(15, 124, 140, 0.15);
+  --shadow-md: 0 4px 16px rgba(15, 124, 140, 0.2);
+  --shadow-lg: 0 8px 28px rgba(15, 124, 140, 0.25);
+}
 
 /* ========== CSS Reset & Base Styles ========== */
 * {
@@ -21,13 +48,13 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background: #F9FAF7;
+  background: var(--color-bg-main);
   font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #3f3f3a;
+  color: var(--color-text-main);
   line-height: 1.6;
 }
 
@@ -36,7 +63,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
   line-height: 1.3;
-  color: #3f3f3a;
+  color: var(--color-title);
   margin: 0 0 1rem 0;
 }
 
@@ -82,13 +109,13 @@ p {
 /* ========== Links ========== */
 a {
   list-style: none;
-  color: #3f3f3a;
+  color: var(--color-text-main);
   text-decoration: none;
   transition: all 0.3s ease;
 }
 
 a:hover {
-  color: #4f5833;
+  color: var(--color-primary);
 }
 
 /* ========== Buttons - Modern & Rounded ========== */
@@ -103,22 +130,29 @@ button,
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  background: #4a5632;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: var(--color-primary);
   color: white;
-  box-shadow: 0 2px 8px rgba(74, 86, 50, 0.2);
+  box-shadow: var(--shadow-sm);
 }
 
 button:hover,
 .btn:hover {
-  background: #3d4429;
+  background: var(--color-primary-hover);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(74, 86, 50, 0.3);
+  box-shadow: var(--shadow-md);
 }
 
 button:active,
 .btn:active {
   transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+button:focus,
+.btn:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
 button:disabled {
@@ -325,6 +359,9 @@ textarea {
     margin-bottom: 15px;
   }
 }
+
+
+
 
 
 

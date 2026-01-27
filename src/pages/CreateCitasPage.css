@@ -91,7 +91,7 @@
   width: 100%;
   padding: 1rem 1.5rem;
   margin-top: 1.75rem;
-  background: #4a5632;
+  background: var(--color-primary);
   color: white;
   border: none;
   border-radius: 12px;
@@ -104,7 +104,7 @@
 }
 
 .create-citas-container button[type="submit"]:hover:not(:disabled) {
-  background: #3d4429;
+  background: var(--color-primary-hover);
   transform: translateY(-3px);
   box-shadow: 0 6px 20px rgba(74, 86, 50, 0.35);
 }
@@ -151,6 +151,9 @@
     padding: 12px 16px;
   }
 }
+
+
+
 
 
 

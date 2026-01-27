@@ -151,12 +151,12 @@
 }
 
 .button-group button:first-child {
-  background: #4a5632;
+  background: var(--color-primary);
   color: white;
 }
 
 .button-group button:first-child:hover:not(:disabled) {
-  background: #3d4429;
+  background: var(--color-primary-hover);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(74, 86, 50, 0.3);
 }
@@ -168,7 +168,7 @@
 }
 
 .button-group button:last-child:hover:not(:disabled) {
-  background: #F9FAF7;
+  background: var(--color-bg-main);
 }
 
 .cita-card > .button-group {
@@ -176,12 +176,12 @@
 }
 
 .cita-card > .button-group button:first-of-type {
-  background: #4a5632;
+  background: var(--color-primary);
   color: white;
 }
 
 .cita-card > .button-group button:first-of-type:hover:not(:disabled) {
-  background: #3d4429;
+  background: var(--color-primary-hover);
 }
 
 .cita-card > .button-group button:last-of-type {
@@ -191,7 +191,7 @@
 }
 
 .cita-card > .button-group button:last-of-type:hover:not(:disabled) {
-  background: #F9FAF7;
+  background: var(--color-bg-main);
   border-color: #5B6B5E;
 }
 
@@ -250,6 +250,9 @@
     font-size: 0.95rem;
   }
 }
+
+
+
 
 
 
