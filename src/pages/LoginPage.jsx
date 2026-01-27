@@ -114,7 +114,7 @@ function LoginPage(props) {
                 className="password-toggle-btn"
                 aria-label={showPassword ? "Ocultar contraseña" : "Mostrar contraseña"}
               >
-                {showPassword ? '👁️' : '👁️‍🗨️'}
+                {showPassword ? '�' : '👁️'}
               </button>
             </div>
 

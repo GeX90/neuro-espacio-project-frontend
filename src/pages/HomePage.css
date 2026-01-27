@@ -48,7 +48,7 @@
 }
 
 .neuro-espacio-title {
-    color: #636E40 !important;
+    color: #00788C !important;
 }
 
 .home-main-message {
@@ -318,15 +318,15 @@
 }
 
 .stat-card.week {
-    border-left: 4px solid #636E40;
-}
-
-.stat-card.month {
     border-left: 4px solid #BFDAD5;
 }
 
+.stat-card.month {
+    border-left: 4px solid #00788C;
+}
+
 .stat-card.patients {
-    border-left: 4px solid #A8B8A0;
+    border-left: 4px solid #BFDAD5;
 }
 
 .stat-icon {
@@ -340,7 +340,7 @@
 
 .stat-content h4 {
     font-size: 0.95rem;
-    color: #636E40;
+    color: #5B6B5E;
     font-weight: 600;
     margin: 0 0 0.5rem 0;
     text-transform: uppercase;
@@ -367,7 +367,7 @@
 .next-appointment-card h4 {
     font-size: 1.25rem;
     font-weight: 700;
-    color: #636E40;
+    color: #00788C;
     margin: 0 0 1rem 0;
 }
 
@@ -386,7 +386,7 @@
 
 .appointment-date {
     font-size: 1rem;
-    color: #636E40;
+    color: #5B6B5E;
     margin: 0 0 0.5rem 0;
     text-transform: capitalize;
 }
@@ -432,7 +432,7 @@
 }
 
 .admin-card.primary {
-    background: linear-gradient(135deg, #636E40 0%, #4f5833 100%);
+    background: linear-gradient(135deg, #00788C 0%, #005f6f 100%);
 }
 
 .admin-card:hover {
