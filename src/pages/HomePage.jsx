@@ -188,6 +188,12 @@ function HomePage() {
                                     <p>Vista semanal y mensual de citas</p>
                                 </Link>
 
+                                <Link to="/admin/disponibilidad" className="admin-card primary">
+                                    <span className="admin-icon">⏰</span>
+                                    <h4>Disponibilidad</h4>
+                                    <p>Gestionar horarios disponibles</p>
+                                </Link>
+
                                 <Link to="/admin/citas" className="admin-card">
                                     <span className="admin-icon">📋</span>
                                     <h4>Gestionar Citas</h4>

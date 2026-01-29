@@ -8,37 +8,50 @@ const API_URL = import.meta.env.VITE_API_URL
 
 function Calendar() {
   const [currentDate, setCurrentDate] = useState(new Date());
-  const [availableDates, setAvailableDates] = useState([]);
+  const [disponibilidad, setDisponibilidad] = useState({});
   const [loading, setLoading] = useState(true);
   const { isLoggedIn } = useContext(AuthContext);
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Obtener fechas disponibles del backend
-    axios
-      .get(`${API_URL}/api/citas/disponibles`)
-      .then((response) => {
-        // Convertir las fechas a formato YYYY-MM-DD para comparación
-        const dates = response.data.map(fecha => 
-          new Date(fecha).toISOString().split('T')[0]
-        );
-        setAvailableDates(dates);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error obteniendo fechas disponibles:", error);
-        // Si falla, generamos fechas de ejemplo (próximos 30 días)
-        const exampleDates = [];
-        const today = new Date();
-        for (let i = 1; i < 30; i++) {
-          const date = new Date(today);
-          date.setDate(today.getDate() + i);
-          exampleDates.push(date.toISOString().split('T')[0]);
+    cargarDisponibilidad();
+  }, [currentDate]);
+
+  const cargarDisponibilidad = async () => {
+    setLoading(true);
+    try {
+      const year = currentDate.getFullYear();
+      const month = currentDate.getMonth();
+      
+      const fechaInicio = new Date(year, month, 1).toISOString().split('T')[0];
+      const fechaFin = new Date(year, month + 1, 0).toISOString().split('T')[0];
+
+      const storedToken = localStorage.getItem('authToken');
+      const headers = storedToken ? { Authorization: `Bearer ${storedToken}` } : {};
+
+      const response = await axios.get(
+        `${API_URL}/api/citas/disponibilidad?fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`,
+        { headers }
+      );
+
+      // Agrupar por fecha para saber qué días tienen al menos un horario disponible
+      const dispPorFecha = {};
+      response.data.forEach(item => {
+        const fecha = new Date(item.fecha).toISOString().split('T')[0];
+        if (!dispPorFecha[fecha]) {
+          dispPorFecha[fecha] = [];
         }
-        setAvailableDates(exampleDates);
-        setLoading(false);
+        dispPorFecha[fecha].push(item.hora);
       });
-  }, []);
+
+      setDisponibilidad(dispPorFecha);
+    } catch (error) {
+      console.error("Error obteniendo disponibilidad:", error);
+      setDisponibilidad({});
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const getDaysInMonth = (date) => {
     const year = date.getFullYear();
@@ -56,7 +69,15 @@ function Calendar() {
     const month = String(currentDate.getMonth() + 1).padStart(2, '0');
     const dayStr = String(day).padStart(2, '0');
     const dateStr = `${year}-${month}-${dayStr}`;
-    return availableDates.includes(dateStr);
+    return disponibilidad[dateStr] && disponibilidad[dateStr].length > 0;
+  };
+
+  const getHorariosDisponibles = (day) => {
+    const year = currentDate.getFullYear();
+    const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+    const dayStr = String(day).padStart(2, '0');
+    const dateStr = `${year}-${month}-${dayStr}`;
+    return disponibilidad[dateStr] || [];
   };
 
   const handleDayClick = (day) => {
@@ -94,14 +115,20 @@ function Calendar() {
     // Días del mes
     for (let day = 1; day <= daysInMonth; day++) {
       const available = isAvailable(day);
+      const horariosDisp = getHorariosDisponibles(day);
+      const cantidadHorarios = horariosDisp.length;
+      
       days.push(
         <div
           key={day}
-          className={`calendar-day ${available ? 'available' : ''}`}
-          title={available ? 'Click para pedir cita' : 'No disponible'}
+          className={`calendar-day ${available ? 'available' : 'unavailable'}`}
+          title={available ? `${cantidadHorarios} horario${cantidadHorarios !== 1 ? 's' : ''} disponible${cantidadHorarios !== 1 ? 's' : ''}` : 'No disponible'}
           onClick={() => available && handleDayClick(day)}
         >
-          {day}
+          <span className="day-number">{day}</span>
+          {available && (
+            <span className="horarios-count">{cantidadHorarios}</span>
+          )}
         </div>
       );
     }

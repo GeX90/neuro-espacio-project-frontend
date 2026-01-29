@@ -71,6 +71,7 @@
 .calendar-day {
   aspect-ratio: 1;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   border-radius: 50px;
@@ -80,10 +81,16 @@
   transition: all 0.3s ease;
   background: var(--color-bg-main);
   color: #9aa5b1;
+  position: relative;
 }
 
 .calendar-day.empty {
   background: transparent;
+}
+
+.calendar-day.unavailable {
+  background: #f8f9fa;
+  color: #adb5bd;
 }
 
 .calendar-day.available {
@@ -98,7 +105,24 @@
   background: #66bb6a;
   color: white;
   transform: scale(1.1);
-  box-shadow: 0 4px 8px rgba(102, 187, 106, 0.3);
+  box-shadow: 0 4px 12px rgba(102, 187, 106, 0.4);
+}
+
+.day-number {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.horarios-count {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: #2e7d32;
+  color: white;
+  font-size: 0.65rem;
+  padding: 2px 5px;
+  border-radius: 10px;
+  font-weight: 600;
 }
 
 .calendar-legend {

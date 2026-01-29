@@ -15,6 +15,7 @@ import CitaDetailsPage from "./pages/CitaDetailsPage";
 import AdminUsersPage from "./pages/AdminUsersPage";
 import AdminCitasPage from "./pages/AdminCitasPage";
 import CalendarPage from "./pages/CalendarPage";
+import AdminDisponibilidadPage from "./pages/AdminDisponibilidadPage";
 
 function App() {
   const location = useLocation();
@@ -42,6 +43,7 @@ function App() {
         {/* Rutas de Admin */}
         <Route path="/admin/users" element={<IsPrivate> <AdminUsersPage /> </IsPrivate>} />
         <Route path="/admin/citas" element={<IsPrivate> <AdminCitasPage /> </IsPrivate>} />
+        <Route path="/admin/disponibilidad" element={<IsPrivate> <AdminDisponibilidadPage /> </IsPrivate>} />
         <Route path="/calendar" element={<IsPrivate> <CalendarPage /> </IsPrivate>} />
       </Routes>
 
