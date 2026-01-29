@@ -7,8 +7,10 @@
   border-radius: 20px;
   padding: 1.5rem;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-  max-width: 450px;
+  max-width: 500px;
+  width: 100%;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .calendar-header {
@@ -29,22 +31,20 @@
   background: var(--color-primary);
   color: white;
   border: none;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  font-size: 1.25rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 50px;
+  font-size: 1.2rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(74, 86, 50, 0.25);
+  transition: all 0.2s ease;
+  min-width: 44px;
 }
 
 .calendar-nav:hover {
-  background: var(--color-primary-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(74, 86, 50, 0.35);
+  background: #0d6875;
+  transform: scale(1.05);
 }
 
 .calendar-weekdays {
@@ -66,6 +66,8 @@
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 0.5rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .calendar-day {
@@ -74,7 +76,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-radius: 50px;
+  border-radius: 12px;
   font-size: 0.9rem;
   font-weight: 500;
   cursor: default;
@@ -82,6 +84,9 @@
   background: var(--color-bg-main);
   color: #9aa5b1;
   position: relative;
+  padding: 0.25rem;
+  box-sizing: border-box;
+  min-width: 0;
 }
 
 .calendar-day.empty {

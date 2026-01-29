@@ -26,12 +26,8 @@ function Calendar() {
       const fechaInicio = new Date(year, month, 1).toISOString().split('T')[0];
       const fechaFin = new Date(year, month + 1, 0).toISOString().split('T')[0];
 
-      const storedToken = localStorage.getItem('authToken');
-      const headers = storedToken ? { Authorization: `Bearer ${storedToken}` } : {};
-
       const response = await axios.get(
-        `${API_URL}/api/citas/disponibilidad?fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`,
-        { headers }
+        `${API_URL}/api/citas/disponibilidad?fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`
       );
 
       // Agrupar por fecha para saber qué días tienen al menos un horario disponible
@@ -148,11 +144,11 @@ function Calendar() {
   return (
     <div className="calendar-container">
       <div className="calendar-header">
-        <button onClick={previousMonth} className="calendar-nav">‹</button>
+        <button onClick={previousMonth} className="calendar-nav">←</button>
         <h2 className="calendar-month">
           {monthNames[currentDate.getMonth()]} {currentDate.getFullYear()}
         </h2>
-        <button onClick={nextMonth} className="calendar-nav">›</button>
+        <button onClick={nextMonth} className="calendar-nav">→</button>
       </div>
 
       <div className="calendar-weekdays">
