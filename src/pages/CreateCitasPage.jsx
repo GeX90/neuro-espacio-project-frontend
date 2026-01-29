@@ -51,12 +51,8 @@ function CreateCitasPage() {
 
     const cargarDisponibilidad = async () => {
         try {
-            const storedToken = localStorage.getItem('authToken');
             const response = await axios.get(
-                `${API_URL}/api/citas/disponibilidad`,
-                {
-                    headers: { Authorization: `Bearer ${storedToken}` }
-                }
+                `${API_URL}/api/citas/disponibilidad`
             );
             setDisponibilidad(response.data);
         } catch (error) {
