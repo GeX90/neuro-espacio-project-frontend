@@ -43,6 +43,7 @@ function Calendar() {
       setDisponibilidad(dispPorFecha);
     } catch (error) {
       console.error("Error obteniendo disponibilidad:", error);
+      // No mostrar error al usuario, solo usar objeto vacío
       setDisponibilidad({});
     } finally {
       setLoading(false);

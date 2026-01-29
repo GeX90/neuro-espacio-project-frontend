@@ -57,7 +57,8 @@ function CreateCitasPage() {
             setDisponibilidad(response.data);
         } catch (error) {
             console.error("Error cargando disponibilidad:", error);
-            setError("Error al cargar la disponibilidad");
+            // No mostrar error al usuario, solo usar array vacío
+            setDisponibilidad([]);
         }
     };
 
