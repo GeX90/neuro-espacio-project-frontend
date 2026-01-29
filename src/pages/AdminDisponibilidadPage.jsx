@@ -7,18 +7,28 @@ import "./AdminDisponibilidadPage.css";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-// Horarios típicos de consulta (9:00 a 18:00)
+// Horarios de sesiones (cada sesión dura 1 hora)
 const HORARIOS_DISPONIBLES = [
-  "09:00", "09:30", "10:00", "10:30", "11:00", "11:30",
-  "12:00", "12:30", "13:00", "13:30", "14:00", "14:30",
-  "15:00", "15:30", "16:00", "16:30", "17:00", "17:30"
+  "09:00 - 10:00",
+  "10:00 - 11:00",
+  "11:00 - 12:00",
+  "12:00 - 13:00",
+  "13:00 - 14:00",
+  "14:00 - 15:00",
+  "15:00 - 16:00",
+  "16:00 - 17:00",
+  "17:00 - 18:00"
 ];
+
+// Extraer solo la hora de inicio para guardar en BD
+const getHoraInicio = (horario) => horario.split(' - ')[0];
 
 function AdminDisponibilidadPage() {
   const { isLoggedIn, isAdmin, isLoading } = useContext(AuthContext);
   const navigate = useNavigate();
   const [currentDate, setCurrentDate] = useState(new Date());
   const [disponibilidad, setDisponibilidad] = useState({});
+  const [cambiosPendientes, setCambiosPendientes] = useState({});
   const [selectedDay, setSelectedDay] = useState(null);
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
@@ -61,6 +71,7 @@ function AdminDisponibilidadPage() {
       });
 
       setDisponibilidad(dispObj);
+      setCambiosPendientes({});
     } catch (error) {
       console.error("Error cargando disponibilidad:", error);
       showMessage('error', 'Error al cargar la disponibilidad');
@@ -74,7 +85,8 @@ function AdminDisponibilidadPage() {
     setTimeout(() => setMessage(null), 3000);
   };
 
-  const toggleDisponibilidad = async (fecha, hora) => {
+  const toggleDisponibilidad = (fecha, horario) => {
+    const hora = getHoraInicio(horario);
     const key = `${fecha}_${hora}`;
     const nuevoEstado = !disponibilidad[key];
 
@@ -84,64 +96,65 @@ function AdminDisponibilidadPage() {
       [key]: nuevoEstado
     }));
 
-    // Guardar en backend
-    try {
-      const storedToken = localStorage.getItem('authToken');
-      await axios.post(
-        `${API_URL}/api/admin/disponibilidad`,
-        {
-          fecha,
-          hora,
-          disponible: nuevoEstado
-        },
-        {
-          headers: { Authorization: `Bearer ${storedToken}` }
-        }
-      );
-    } catch (error) {
-      console.error("Error actualizando disponibilidad:", error);
-      // Revertir cambio si falla
-      setDisponibilidad(prev => ({
-        ...prev,
-        [key]: !nuevoEstado
-      }));
-      showMessage('error', 'Error al actualizar la disponibilidad');
-    }
+    // Marcar como cambio pendiente
+    setCambiosPendientes(prev => ({
+      ...prev,
+      [key]: { fecha, hora, disponible: nuevoEstado }
+    }));
   };
 
-  const marcarDiaCompleto = async (fecha, disponible) => {
-    const horarios = HORARIOS_DISPONIBLES.map(hora => ({
-      fecha,
-      hora,
-      disponible
-    }));
+  const guardarCambios = async () => {
+    const cambiosArray = Object.values(cambiosPendientes);
+    
+    if (cambiosArray.length === 0) {
+      showMessage('error', 'No hay cambios pendientes para guardar');
+      return;
+    }
 
     setSaving(true);
     try {
       const storedToken = localStorage.getItem('authToken');
+      
+      // Guardar todos los cambios en batch
       await axios.put(
         `${API_URL}/api/admin/disponibilidad/batch`,
-        { horarios },
+        { horarios: cambiosArray },
         {
           headers: { Authorization: `Bearer ${storedToken}` }
         }
       );
 
-      // Actualizar UI
-      const newDisp = { ...disponibilidad };
-      HORARIOS_DISPONIBLES.forEach(hora => {
-        const key = `${fecha}_${hora}`;
-        newDisp[key] = disponible;
-      });
-      setDisponibilidad(newDisp);
-      
-      showMessage('success', `Día marcado como ${disponible ? 'disponible' : 'no disponible'}`);
+      setCambiosPendientes({});
+      showMessage('success', `${cambiosArray.length} cambio${cambiosArray.length !== 1 ? 's' : ''} guardado${cambiosArray.length !== 1 ? 's' : ''} correctamente`);
     } catch (error) {
-      console.error("Error actualizando día completo:", error);
-      showMessage('error', 'Error al actualizar la disponibilidad');
+      console.error("Error guardando cambios:", error);
+      showMessage('error', 'Error al guardar los cambios');
     } finally {
       setSaving(false);
     }
+  };
+
+  const marcarDiaCompleto = async (fecha, disponible) => {
+    const horarios = HORARIOS_DISPONIBLES.map(horario => {
+      const hora = getHoraInicio(horario);
+      return { fecha, hora, disponible };
+    });
+
+    // Actualizar UI inmediatamente
+    const newDisp = { ...disponibilidad };
+    const newCambios = { ...cambiosPendientes };
+    
+    HORARIOS_DISPONIBLES.forEach(horario => {
+      const hora = getHoraInicio(horario);
+      const key = `${fecha}_${hora}`;
+      newDisp[key] = disponible;
+      newCambios[key] = { fecha, hora, disponible };
+    });
+    
+    setDisponibilidad(newDisp);
+    setCambiosPendientes(newCambios);
+    
+    showMessage('success', 'Cambios marcados. Haz clic en "Guardar cambios" para aplicarlos');
   };
 
   const getDaysInMonth = () => {
@@ -171,7 +184,8 @@ function AdminDisponibilidadPage() {
     const dayStr = String(dia).padStart(2, '0');
     const fecha = `${year}-${month}-${dayStr}`;
 
-    return HORARIOS_DISPONIBLES.filter(hora => {
+    return HORARIOS_DISPONIBLES.filter(horario => {
+      const hora = getHoraInicio(horario);
       const key = `${fecha}_${hora}`;
       return disponibilidad[key] === true;
     }).length;
@@ -188,9 +202,10 @@ function AdminDisponibilidadPage() {
     setSelectedDay(dia);
   };
 
-  const isHoraDisponible = (hora) => {
+  const isHoraDisponible = (horario) => {
     if (!selectedDay) return false;
     const fecha = getFechaString(selectedDay);
+    const hora = getHoraInicio(horario);
     const key = `${fecha}_${hora}`;
     return disponibilidad[key] === true;
   };
@@ -317,6 +332,33 @@ function AdminDisponibilidadPage() {
                       month: 'long' 
                     })}
                   </h3>
+                  <div className="save-controls">
+                    {Object.keys(cambiosPendientes).length > 0 && (
+                      <span className="pending-changes">
+                        {Object.keys(cambiosPendientes).length} cambio{Object.keys(cambiosPendientes).length !== 1 ? 's' : ''} pendiente{Object.keys(cambiosPendientes).length !== 1 ? 's' : ''}
+                      </span>
+                    )}
+                    <button
+                      onClick={guardarCambios}
+                      disabled={saving || Object.keys(cambiosPendientes).length === 0}
+                      className="btn-save-changes"
+                    >
+                      {saving ? 'Guardando...' : 'Guardar cambios'}
+                    </button>
+                    {Object.keys(cambiosPendientes).length > 0 && (
+                      <button
+                        onClick={() => {
+                          setCambiosPendientes({});
+                          cargarDisponibilidad();
+                          showMessage('success', 'Cambios descartados');
+                        }}
+                        disabled={saving}
+                        className="btn-discard-changes"
+                      >
+                        Descartar
+                      </button>
+                    )}
+                  </div>
                   <div className="day-actions-compact">
                     <button
                       onClick={() => marcarDiaCompleto(selectedFecha, true)}
