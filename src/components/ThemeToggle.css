@@ -1,0 +1,125 @@
+/* ==========================================
+   Theme Toggle Component Styles
+   Accesible, responsivo y con animaciones suaves
+   ========================================== */
+
+.theme-toggle-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--color-bg-section);
+  color: var(--color-text-main);
+  border: 2px solid var(--color-border);
+  border-radius: 50px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  min-height: 44px;
+  white-space: nowrap;
+}
+
+.theme-toggle-button:hover {
+  background: var(--color-primary);
+  color: var(--color-text-on-primary);
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.theme-toggle-button:focus {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.theme-toggle-button:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+.theme-toggle-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+}
+
+.theme-icon {
+  width: 20px;
+  height: 20px;
+  transition: all 0.3s ease;
+}
+
+/* Animación de rotación para los iconos */
+.moon-icon {
+  animation: moonRotate 0.5s ease-in-out;
+}
+
+.sun-icon {
+  animation: sunRotate 0.5s ease-in-out;
+}
+
+@keyframes moonRotate {
+  0% {
+    transform: rotate(-90deg) scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes sunRotate {
+  0% {
+    transform: rotate(90deg) scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+    opacity: 1;
+  }
+}
+
+.theme-toggle-text {
+  font-size: 0.9rem;
+}
+
+/* Responsive - Esconder texto en móviles */
+@media (max-width: 768px) {
+  .theme-toggle-text {
+    display: none;
+  }
+  
+  .theme-toggle-button {
+    padding: 0.5rem;
+    min-width: 44px;
+    border-radius: 50%;
+    gap: 0;
+  }
+  
+  .theme-toggle-icon-wrapper {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .theme-icon {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* Cuando animaciones están deshabilitadas */
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle-button,
+  .theme-icon,
+  .moon-icon,
+  .sun-icon {
+    animation: none !important;
+    transition: none !important;
+  }
+}

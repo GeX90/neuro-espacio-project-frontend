@@ -1,10 +1,29 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>neuro-espacio-project-frontend</title>
+    <title>Neuro Espacio - Psicología y Bienestar</title>
+    <meta name="description" content="Centro de atención psicológica profesional" />
+    
+    <!-- Script para prevenir el "flicker" del dark mode -->
+    <script>
+      (function() {
+        try {
+          // Intentar obtener el tema guardado o usar la preferencia del sistema
+          const savedTheme = localStorage.getItem('theme');
+          const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          const theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+          
+          // Aplicar el tema antes de que se cargue el contenido
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {
+          // Si hay error, usar tema claro por defecto
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

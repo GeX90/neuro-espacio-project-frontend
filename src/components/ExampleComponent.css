@@ -1,0 +1,266 @@
+/* ==========================================
+   Example Component - Dark Mode Styles
+   Demostración de uso de variables CSS
+   ========================================== */
+
+.example-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* ========== Card Example ========== */
+.example-card {
+  background: var(--color-bg-card);
+  color: var(--color-text-main);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s ease;
+}
+
+.example-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+.example-card h2 {
+  color: var(--color-title);
+  margin-bottom: 1rem;
+}
+
+.example-card p {
+  color: var(--color-text-main);
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+.theme-indicator {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: var(--color-bg-hover);
+  border-radius: 8px;
+  border-left: 4px solid var(--color-primary);
+}
+
+.theme-indicator strong {
+  color: var(--color-primary);
+  text-transform: capitalize;
+}
+
+/* ========== Form Example ========== */
+.example-form {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: var(--shadow-md);
+}
+
+.example-form h3 {
+  color: var(--color-title);
+  margin-bottom: 1.5rem;
+}
+
+.example-form label {
+  display: block;
+  color: var(--color-text-main);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+}
+
+.example-form input,
+.example-form textarea {
+  width: 100%;
+  background: var(--color-bg-input);
+  color: var(--color-text-main);
+  border: 2px solid var(--color-border);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.example-form input:focus,
+.example-form textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px var(--color-primary-light);
+}
+
+.example-form input::placeholder,
+.example-form textarea::placeholder {
+  color: var(--color-text-muted);
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.btn-primary {
+  flex: 1;
+  background: var(--color-primary);
+  color: var(--color-text-on-primary);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+  background: var(--color-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary:focus {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.btn-secondary {
+  flex: 1;
+  background: var(--color-bg-card);
+  color: var(--color-text-main);
+  border: 2px solid var(--color-border);
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--color-bg-hover);
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+.btn-secondary:focus {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+/* ========== Status Examples ========== */
+.status-examples {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: var(--shadow-md);
+}
+
+.status-examples h3 {
+  color: var(--color-title);
+  margin-bottom: 1.5rem;
+}
+
+.status-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.status-badge {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.status-badge.success {
+  background: var(--color-success);
+  color: var(--color-text-on-primary);
+}
+
+.status-badge.warning {
+  background: var(--color-warning);
+  color: var(--color-text-on-primary);
+}
+
+.status-badge.error {
+  background: var(--color-error);
+  color: var(--color-text-on-primary);
+}
+
+.status-badge.info {
+  background: var(--color-info);
+  color: var(--color-text-on-primary);
+}
+
+.status-badge:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-md);
+}
+
+/* ========== List Example ========== */
+.example-list {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: var(--shadow-md);
+}
+
+.example-list h3 {
+  color: var(--color-title);
+  margin-bottom: 1rem;
+}
+
+.example-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.example-list li {
+  color: var(--color-text-main);
+  padding: 1rem;
+  border-bottom: 1px solid var(--color-border);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.example-list li:last-child {
+  border-bottom: none;
+}
+
+.example-list li:hover {
+  background: var(--color-bg-hover);
+  padding-left: 1.5rem;
+  color: var(--color-primary);
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 768px) {
+  .example-container {
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+
+  .example-card,
+  .example-form,
+  .status-examples,
+  .example-list {
+    padding: 1.5rem;
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+
+  .status-grid {
+    grid-template-columns: 1fr;
+  }
+}

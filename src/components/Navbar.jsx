@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/auth.context";
-import { ThemeContext } from "../context/theme.context";
+import { useTheme } from "../hooks/useTheme";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
@@ -12,7 +12,7 @@ function Navbar() {
     logOutUser              
   } = useContext(AuthContext);
   
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { theme, toggleTheme } = useTheme();
   
   const [menuOpen, setMenuOpen] = useState(false);
   
