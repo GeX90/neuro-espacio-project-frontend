@@ -31,6 +31,53 @@
   --shadow-sm: 0 2px 8px rgba(15, 124, 140, 0.15);
   --shadow-md: 0 4px 16px rgba(15, 124, 140, 0.2);
   --shadow-lg: 0 8px 28px rgba(15, 124, 140, 0.25);
+  
+  /* Navbar specific */
+  --navbar-bg: white;
+  --navbar-shadow: rgba(0, 0, 0, 0.06);
+}
+
+/* Dark Mode Variables */
+[data-theme="dark"] {
+  /* Background Colors */
+  --color-bg-main: #1a1a1a;
+  --color-bg-section: #2d3a35;
+  
+  /* Primary Colors */
+  --color-primary: #1a9faf;
+  --color-primary-hover: #1cb4c5;
+  
+  /* Text Colors */
+  --color-title: #a8c78f;
+  --color-text-main: #e0e0e0;
+  --color-text-secondary: #9eb5c8;
+  
+  /* UI Colors */
+  --color-border: #3a3a3a;
+  --color-success: #66bb6a;
+  --color-warning: #ffa726;
+  --color-error: #ef5350;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 28px rgba(0, 0, 0, 0.5);
+  
+  /* Navbar specific */
+  --navbar-bg: #242424;
+  --navbar-shadow: rgba(0, 0, 0, 0.3);
+}
+
+/* Respect user preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* ========== CSS Reset & Base Styles ========== */
@@ -43,6 +90,7 @@
 html {
   font-size: 16px;
   scroll-behavior: smooth;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body {
@@ -56,6 +104,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: var(--color-text-main);
   line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* ========== Typography ========== */
