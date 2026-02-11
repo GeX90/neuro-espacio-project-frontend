@@ -93,6 +93,20 @@ nav button {
     text-align: center;
 }
 
+/* Modo oscuro: texto casi negro en botones */
+[data-theme="dark"] .nav-link,
+[data-theme="dark"] .nav-btn,
+[data-theme="dark"] nav button:not(.theme-toggle-btn):not(.navbar-burger) {
+    color: #1a1a1a;
+}
+
+/* Botón de Reservar Cita / Nueva Cita subrayado */
+.nav-link-cta {
+    text-decoration: underline !important;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 2px;
+}
+
 .nav-link:hover,
 .nav-btn:hover,
 nav button:hover {

@@ -39,7 +39,7 @@ function Navbar() {
 
       <div className={`navbar-navigation ${menuOpen ? 'mobile-open' : ''}`}>
         {!isLoggedIn && (
-          <Link to="/signup" onClick={closeMenu} className="nav-link">
+          <Link to="/signup" onClick={closeMenu} className="nav-link nav-link-cta">
             Reservar Cita
           </Link>
         )}
@@ -68,7 +68,7 @@ function Navbar() {
                   Mis Citas
                 </Link>
 
-                <Link to="/citas/create" onClick={closeMenu} className="nav-link">
+                <Link to="/citas/create" onClick={closeMenu} className="nav-link nav-link-cta">
                   Nueva Cita
                 </Link>
               </>
