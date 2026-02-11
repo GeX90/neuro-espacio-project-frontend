@@ -33,8 +33,6 @@ function CreateCitasPage() {
             return;
         }
 
-        cargarDisponibilidad();
-
         // Obtener citas existentes para validación
         const storedToken = localStorage.getItem('authToken');
         axios
@@ -49,22 +47,28 @@ function CreateCitasPage() {
             });
     }, [isLoggedIn, isLoading, navigate]);
 
+    // Recargar disponibilidad cuando cambia el mes
+    useEffect(() => {
+        if (isLoggedIn) {
+            cargarDisponibilidad();
+        }
+    }, [currentDate, isLoggedIn]);
+
     const cargarDisponibilidad = async () => {
         try {
-            console.log("Intentando cargar disponibilidad desde:", `${API_URL}/api/citas/disponibilidad`);
+            const year = currentDate.getFullYear();
+            const month = currentDate.getMonth();
+            
+            const fechaInicio = new Date(year, month, 1).toISOString().split('T')[0];
+            const fechaFin = new Date(year, month + 1, 0).toISOString().split('T')[0];
+
             const response = await axios.get(
-                `${API_URL}/api/citas/disponibilidad`,
+                `${API_URL}/api/citas/disponibilidad?fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`,
                 { timeout: 10000 } // 10 segundos timeout
             );
-            console.log("Respuesta recibida:", response.status);
-            console.log("Disponibilidad recibida:", response.data);
-            console.log("Total de horarios disponibles:", response.data.length);
             setDisponibilidad(response.data);
         } catch (error) {
-            console.error("Error cargando disponibilidad:");
-            console.error("- Mensaje:", error.message);
-            console.error("- Response:", error.response?.data);
-            console.error("- Status:", error.response?.status);
+            console.error("Error cargando disponibilidad:", error);
             // No mostrar error al usuario, solo usar array vacío
             setDisponibilidad([]);
         }
@@ -159,10 +163,6 @@ function CreateCitasPage() {
     const handleDaySelect = (dia) => {
         const fecha = getFechaString(dia);
         const horariosDisp = getHorariosDisponibles(fecha);
-        
-        console.log("Día seleccionado:", dia);
-        console.log("Fecha:", fecha);
-        console.log("Horarios disponibles para esta fecha:", horariosDisp);
         
         if (horariosDisp.length === 0) {
             setError("No hay horarios disponibles para este día");
