@@ -46,6 +46,11 @@ nav {
     border-radius: 4px;
 }
 
+/* Logo visibility in dark mode */
+[data-theme="dark"] .navbar-logo {
+    filter: brightness(0) invert(1);
+}
+
 .navbar-title {
     color: var(--color-title);
     font-size: 1rem;

@@ -82,7 +82,7 @@
   cursor: default;
   transition: all 0.3s ease;
   background: var(--color-bg-main);
-  color: #9aa5b1;
+  color: var(--color-text-muted);
   position: relative;
   padding: 0.25rem;
   box-sizing: border-box;
@@ -94,36 +94,38 @@
 }
 
 .calendar-day.unavailable {
-  background: #f8f9fa;
-  color: #adb5bd;
+  background: var(--color-bg-hover);
+  color: var(--color-text-muted);
+  opacity: 0.6;
 }
 
 .calendar-day.available {
-  background: #e8f5e9;
-  color: #2e7d32;
-  border: 2px solid #66bb6a;
+  background: rgba(76, 175, 80, 0.15);
+  color: var(--color-success);
+  border: 2px solid var(--color-success);
   cursor: pointer;
   font-weight: 700;
 }
 
 .calendar-day.available:hover {
-  background: #66bb6a;
-  color: white;
+  background: var(--color-success);
+  color: var(--color-text-on-primary);
   transform: scale(1.1);
-  box-shadow: 0 4px 12px rgba(102, 187, 106, 0.4);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
 }
 
 .day-number {
   font-size: 1rem;
   font-weight: 700;
+  color: var(--color-text-main);
 }
 
 .horarios-count {
   position: absolute;
   top: 4px;
   right: 4px;
-  background: #2e7d32;
-  color: white;
+  background: var(--color-success);
+  color: var(--color-text-on-primary);
   font-size: 0.65rem;
   padding: 2px 5px;
   border-radius: 10px;
