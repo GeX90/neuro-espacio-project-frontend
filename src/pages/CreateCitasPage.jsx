@@ -148,7 +148,12 @@ function CreateCitasPage() {
 
     const getHorariosDisponibles = (fecha) => {
         return disponibilidad.filter(disp => {
-            const dispFecha = new Date(disp.fecha).toISOString().split('T')[0];
+            // Convertir la fecha UTC a fecha local para comparación
+            const dispDate = new Date(disp.fecha);
+            const dispYear = dispDate.getFullYear();
+            const dispMonth = String(dispDate.getMonth() + 1).padStart(2, '0');
+            const dispDay = String(dispDate.getDate()).padStart(2, '0');
+            const dispFecha = `${dispYear}-${dispMonth}-${dispDay}`;
             return dispFecha === fecha;
         });
     };

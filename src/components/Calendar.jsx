@@ -42,7 +42,12 @@ function Calendar() {
       const dispPorFecha = {};
       if (Array.isArray(response.data)) {
         response.data.forEach(item => {
-          const fecha = new Date(item.fecha).toISOString().split('T')[0];
+          // Convertir fecha UTC a fecha local para agrupación correcta
+          const date = new Date(item.fecha);
+          const year = date.getFullYear();
+          const month = String(date.getMonth() + 1).padStart(2, '0');
+          const day = String(date.getDate()).padStart(2, '0');
+          const fecha = `${year}-${month}-${day}`;
           if (!dispPorFecha[fecha]) {
             dispPorFecha[fecha] = [];
           }
