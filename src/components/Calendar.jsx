@@ -26,9 +26,16 @@ function Calendar() {
       const fechaInicio = new Date(year, month, 1).toISOString().split('T')[0];
       const fechaFin = new Date(year, month + 1, 0).toISOString().split('T')[0];
 
-      const response = await axios.get(
+      // Timeout de 5 segundos para evitar esperas muy largas
+      const timeoutPromise = new Promise((_, reject) => 
+        setTimeout(() => reject(new Error('Timeout')), 5000)
+      );
+
+      const fetchPromise = axios.get(
         `${API_URL}/api/citas/disponibilidad?fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`
       );
+
+      const response = await Promise.race([fetchPromise, timeoutPromise]);
 
       // Agrupar por fecha para saber qué días tienen al menos un horario disponible
       const dispPorFecha = {};
@@ -138,12 +145,9 @@ function Calendar() {
     "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
   ];
 
-  if (loading) {
-    return <div className="calendar-loading">Cargando disponibilidad...</div>;
-  }
-
   return (
     <div className="calendar-container">
+      {loading && <div className="calendar-loading-overlay">Actualizando...</div>}
       <div className="calendar-header">
         <button onClick={previousMonth} className="calendar-nav">←</button>
         <h2 className="calendar-month">
